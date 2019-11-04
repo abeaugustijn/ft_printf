@@ -1,0 +1,7 @@
+coverage
+.vscode
+*.a
+*.o
+*test*
+libft
+a.out
