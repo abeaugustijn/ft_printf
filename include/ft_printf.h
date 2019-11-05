@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                     +:+                    */
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:10 by abe            #+#    #+#                */
-/*   Updated: 2019/11/04 21:30:05 by abe           ########   odam.nl         */
+/*   Updated: 2019/11/05 10:32:22 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FT_PRINTF_H
 # include <libft.h>
 
-# define NULL ((void *)0)
+# ifndef NULL
+#  define NULL ((void *)0)
+# endif
 
 typedef int		t_var_type;
 # define CHAR 1
