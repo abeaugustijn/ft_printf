@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:43:39 by abe            #+#    #+#                */
-/*   Updated: 2019/11/04 21:33:07 by abe           ########   odam.nl         */
+/*   Updated: 2019/11/05 10:53:37 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ t_var_type	char_to_var_type(const char *format)
 	char	c;
 
 	c = next_format_char(format);
-	if (!c)
-		return (0);
 	if (c == 'c')
 		return (CHAR);
 	if (c == 's')

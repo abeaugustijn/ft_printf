@@ -4,4 +4,4 @@ coverage
 *.o
 *test*
 libft
-a.out
+a.out*

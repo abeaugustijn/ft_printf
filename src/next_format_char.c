@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 21:07:01 by abe            #+#    #+#                */
-/*   Updated: 2019/11/04 21:32:36 by abe           ########   odam.nl         */
+/*   Updated: 2019/11/05 10:55:08 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	next_format_char(const char *format)
 		if (format[i] == 'c' || format[i] == 's' || format[i] == 'p' ||
 			format[i] == 'd' || format[i] == 'i' || format[i] == 'u' ||
 			format[i] == 'x' || format[i] == 'X')
-			break;
+			break ;
 		i++;
 		if (format[i] == '%')
 			return (0);
