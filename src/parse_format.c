@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:31:04 by abe            #+#    #+#                */
-/*   Updated: 2019/11/05 10:46:46 by aaugusti      ########   odam.nl         */
+/*   Updated: 2019/11/05 16:07:57 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_list	*parse_format(const char *format)
 			if (to_add->type == 0)
 				to_add->type = 8;
 			to_add->format = (char *)&(format[i]);
+			if (to_add->type == UNDEFINED && format[i + 1] == '%')
+				i++;
 			ft_lstadd_back(&res, ft_lstnew(to_add));
 		}
 		i++;

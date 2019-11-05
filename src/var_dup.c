@@ -6,19 +6,19 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 12:27:10 by aaugusti       #+#    #+#                */
-/*   Updated: 2019/11/05 13:46:25 by aaugusti      ########   odam.nl         */
+/*   Updated: 2019/11/05 15:38:54 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <ft_printf.h>
 
-void	*var_dup_ptr(void *src, size_t len)
+void	*var_dup_ptr(void *src)
 {
 	void	*res;
 
-	res = malloc(len);
-	ft_memcpy(res, src, len);
+	res = malloc(sizeof(void *));
+	*((char *)res) = *((char *)src);
 	return (res);
 }
 

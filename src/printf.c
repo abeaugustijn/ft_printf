@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:47 by abe            #+#    #+#                */
-/*   Updated: 2019/11/05 14:16:18 by aaugusti      ########   odam.nl         */
+/*   Updated: 2019/11/05 16:09:13 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <ft_printf.h>
 #include <stdarg.h>
 #include <stdlib.h>
+
+	#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -24,7 +26,7 @@ int	ft_printf(const char *format, ...)
 	vars = parse_format(format);
 	expected_argc = get_expected_argc(vars);
 	args = (va_list *)malloc(sizeof(va_list));
-	va_start(*args, expected_argc);
+	va_start(*args, format);
 	get_arg_values(vars, args, expected_argc);
 	va_end(*args);
 	while (vars)
@@ -32,6 +34,7 @@ int	ft_printf(const char *format, ...)
 		ft_putnbr_fd(((t_var *)vars->content)->type, 1);
 		ft_putchar_fd('\n', 1);
 		ft_putendl_fd(((t_var *)vars->content)->format, 1);
+		printf("%s\n", ((t_var *)vars->content)->value);
 		ft_putchar_fd('\n', 1);
 		vars = vars->next;
 	}

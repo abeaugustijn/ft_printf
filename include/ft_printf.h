@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:10 by abe            #+#    #+#                */
-/*   Updated: 2019/11/05 14:15:23 by aaugusti      ########   odam.nl         */
+/*   Updated: 2019/11/05 15:39:10 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_var_type		char_to_var_type(const char *format);
 char			next_format_char(const char *format);
 int				get_expected_argc(t_list *vars);
 void			get_arg_values(t_list *vars, va_list *args, int expected_argc);
-void			*var_dup_ptr(void *src, size_t len);
+void			*var_dup_ptr(void *src);
 void			*var_dup_char(char c);
 void			*var_dup_int(int i);
 void			*var_dup_uint(unsigned int i);
