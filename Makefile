@@ -1,18 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                      +:+                     #
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/04 21:26:10 by abe           ########   odam.nl          #
+#    Updated: 2019/11/05 10:33:11 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libftprintf.a
 SRCS			=	printf parse_format var_new next_format_char\
-	char_to_var_type testmain
+	char_to_var_type
 BONUS_SRCS		=	
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
@@ -29,14 +29,14 @@ LIBFT_LIB		= ./libft/libft.a
 
 all: $(NAME)
 
-$(NAME): libft $(OFILES)
+$(NAME): $(OFILES)
 	@echo "Linking lib"
 	@$(AR_COMMAND) $(NAME) $(OFILES)
 	@echo "Done"
 
-%.o: %.c
+%.o: %.c libft
 	@echo "Compiling: $<"
-	@gcc -o $@ -c $< $(FLAGS) -I $(INCLUDES) -L $(LIBFT_LIB)
+	@gcc -o $@ -c $< $(FLAGS) -I $(INCLUDES)
 
 clean: _clean
 	@echo "Cleaning..."
@@ -52,11 +52,7 @@ _clean:
 
 re: fclean all 
 
-libft:
-	@echo "Making libft"
-	@make -C $(LIBFT_DIR)
-
-bonus: libft $(OFILES) $(BONUS_OFILES) $(NAME)
+bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 	@echo "Linking bonus lib"
 	@$(AR_COMMAND) $(NAME) $(OFILES) $(BONUS_OFILES)
 	@echo "Bonus done"
