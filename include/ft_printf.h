@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                     +:+                    */
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:10 by abe            #+#    #+#                */
-/*   Updated: 2019/11/05 15:39:10 by aaugusti      ########   odam.nl         */
+/*   Updated: 2019/11/07 20:24:12 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef	struct	s_var
 	t_var_type	type;
 	char		*format;
 	void		*value;
+	char		*res;
 }				t_var;
 t_var			*var_new(void);
 
@@ -49,5 +50,6 @@ void			*var_dup_char(char c);
 void			*var_dup_int(int i);
 void			*var_dup_uint(unsigned int i);
 void			*var_dup_ulong(unsigned long i);
+void			format_vars(t_list *vars);
 
 #endif

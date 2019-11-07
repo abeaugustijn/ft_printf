@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   printf.c                                           :+:    :+:            */
+/*   printf.c                                           :+:      :+:    :+:   */
 /*                                                     +:+                    */
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:47 by abe            #+#    #+#                */
-/*   Updated: 2019/11/05 16:09:13 by aaugusti      ########   odam.nl         */
+/*   Updated: 2019/11/07 20:17:42 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ int	ft_printf(const char *format, ...)
 	va_start(*args, format);
 	get_arg_values(vars, args, expected_argc);
 	va_end(*args);
+	format_vars(vars);
 	while (vars)
 	{
 		ft_putnbr_fd(((t_var *)vars->content)->type, 1);
 		ft_putchar_fd('\n', 1);
 		ft_putendl_fd(((t_var *)vars->content)->format, 1);
-		printf("%s\n", ((t_var *)vars->content)->value);
+		printf("%s\n", (char *)((t_var *)vars->content)->value);
 		ft_putchar_fd('\n', 1);
 		vars = vars->next;
 	}
@@ -47,5 +48,6 @@ int	main(void)
 
 	str = "dnf%sdndg%%djfgn%s%djfg";
 	ft_putendl_fd(str, 1);
+	ft_putchar_fd('\n', 1);
 	ft_printf(str, "test", "test2", 123);
 }
