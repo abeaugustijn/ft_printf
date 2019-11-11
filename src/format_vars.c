@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 20:23:01 by abe               #+#    #+#             */
-/*   Updated: 2019/11/07 20:59:04 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/08 10:32:55 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	string_len(t_list *vars)
 	if (type == STRING)
 		return (ft_strlen((char *)vars->value));
 	if (type == POINTER)
-		return (
+		return ft_strlen(ft_itoa_base(vars->value));
 
 }
 
