@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/05 10:33:11 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/11/11 22:16:57 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ AR_COMMAND		= ar rs
 
 LIBFT_DIR		= ./libft
 LIBFT_LIB		= ./libft/libft.a
+
+test:
+	@make -C libft
+	clang test.c src/**/*.c -L./libft -lft -Ilibft -Iinclude
 
 all: $(NAME)
 
