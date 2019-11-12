@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/11/12 15:16:06 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/12 19:49:29 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_format_info
 
 t_format_info	*t_fi_create();
 int				t_fi_get_info(t_format_info	*info, char **format);
+void			t_fi_check_width_precision(t_format_info *info, va_list *args);
 void			output(t_format_info *info, va_list *args);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/12 16:18:46 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/12 20:15:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	width(t_format_info *info, char **format)
 	{
 		info->expect_width_arg = TRUE;
 		info->has_width = TRUE;
+		(*format)++;
 		return ;
 	}
 	width = ft_atoi(*format);
@@ -107,6 +108,8 @@ int		specifier(t_format_info *info, char **format)
 		info->type = STRING;
 	else if (**format == 'c')
 		info->type = CHAR;
+	else if (**format == 'i' || **format == 'd')
+		info->type = INT;
 	else
 		return (1);
 	return (0);

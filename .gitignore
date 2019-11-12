@@ -5,6 +5,6 @@ coverage
 libft
 a.out*
 
-*test*
 .ccls
 
+pft/

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
+/*   t_fi_check_width_precision.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/12 20:15:09 by abe              ###   ########.fr       */
+/*   Created: 2019/11/12 19:50:18 by abe               #+#    #+#             */
+/*   Updated: 2019/11/12 19:54:10 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <formats.h>
+#include <t_format_info.h>
+#include <stdarg.h>
 
-void	output(t_format_info *info, va_list *args)
+void			t_fi_check_width_precision(t_format_info *info, va_list *args)
 {
-	if (info->type == STRING)
-		f_string(info, args);
-	else if (info->type == CHAR)
-		f_char(info, args);
-	else if (info->type == INT)
-		f_int(info, args);
+	if (info->expect_width_arg)
+		info->width = (int)va_arg(*args, int);
+	if (info->expect_precision_arg)
+		info->precision = (int)va_arg(*args, int);
 }
+

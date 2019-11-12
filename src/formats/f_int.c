@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_char.c                                           :+:      :+:    :+:   */
+/*   f_int.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 15:31:56 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/12 19:54:44 by abe              ###   ########.fr       */
+/*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
+/*   Updated: 2019/11/12 20:14:14 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <formats.h>
 #include <stdarg.h>
+#include <t_format_info.h>
 
-void	f_char(t_format_info *info, va_list *args)
+void	f_int(t_format_info *info, va_list *args)
 {
-	char	c;
-	int		i;
+	int	to_put;
+	int	i;
+	int	int_len;
 
-	c = (char)va_arg(*args, int);
+	to_put = (int)va_arg(*args, int);
 	if (info->left_align)
-		ft_putchar_fd(c, FD);
+		ft_putnbr_fd(to_put, FD);
+	int_len = (int)ft_intlen(to_put);
 	if (info->has_width)
 	{
 		i = 0;
-		while (i < info->width - 1)
+		while (i < info->width - int_len)
 		{
-			ft_putchar_fd(info->zero_pad ? '0' : ' ', 1);
+			ft_putchar_fd(info->zero_pad ? '0' : ' ', FD);
 			i++;
 		}
 	}
 	if (!info->left_align)
-		ft_putchar_fd(c, FD);
+		ft_putnbr_fd(to_put, FD);
 }

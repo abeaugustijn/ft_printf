@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:34:29 by abe               #+#    #+#             */
-/*   Updated: 2019/11/12 14:48:47 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/12 19:54:42 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void		handle_format(char **format, va_list *args)
 	info = t_fi_create();
 	// if (t_fi_get_info(info, *format)) TODO: handle bad snippet
 	t_fi_get_info(info, format);
+	t_fi_check_width_precision(info, args);
 	output(info, args);
 	free(info);
 }
