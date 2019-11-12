@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:10 by abe            #+#    #+#                */
-/*   Updated: 2019/11/11 22:15:04 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/12 15:21:35 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 # include <stdarg.h>
 # include <t_format_info.h>
 
+# define FD 1
+
 # ifndef NULL
 #  define NULL ((void *)0)
 # endif
 
+# ifndef T_VAR_TYPE
+#  define T_VAR_TYPE
 typedef int		t_var_type;
+# endif
+
 # define CHAR 1
 # define STRING 2
 # define POINTER 3
@@ -31,7 +37,7 @@ typedef int		t_var_type;
 # define UNDEFINED 8
 
 int				ft_printf(const char *format, ...);
-void			handle_format(char **format);
+void			handle_format(char **format, va_list *args);
 t_format_info	get_var_type(char *format);
 
 #endif
