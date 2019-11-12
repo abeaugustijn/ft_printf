@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:49:53 by abe               #+#    #+#             */
-/*   Updated: 2019/11/11 22:17:15 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/12 11:30:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_format_info	*t_fi_create()
 	res->left_align = FALSE;
 	res->presicion = 0;
 	res->type = UNDEFINED;
-	res->hex_identifier = 0;
+	res->hex_identifier = FALSE;
+	res->has_space = FALSE;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/11/11 22:15:40 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/12 11:30:41 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_format_info
 	t_bool		expect_precision_arg;
 	t_bool		force_sign;
 	t_bool		hex_identifier;
+	t_bool		has_space;
 }				t_format_info;
 
 t_format_info	*t_fi_create();

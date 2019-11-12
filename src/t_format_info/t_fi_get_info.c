@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/11 21:52:19 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/12 11:33:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 /*
 **	Deal with the flags.
+**	- Skips the '%' char
+**	- Loops through the flags and sets the appropiate variable until another
+**		character is encountered
 */
 
 void	flags(t_format_info *info, char **format)
 {
+	(*format)++;
 	while (**format)
 	{
 		if (**format == '-')
@@ -29,6 +33,8 @@ void	flags(t_format_info *info, char **format)
 			info->force_sign = TRUE;
 		else if (**format == '#')
 			info->hex_identifier = TRUE;
+		else if (**format == ' ')
+			info->has_space = TRUE;
 		else
 			return ;
 		(*format)++;

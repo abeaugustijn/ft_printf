@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/11 22:16:57 by abe              ###   ########.fr        #
+#    Updated: 2019/11/12 10:53:56 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIBFT_LIB		= ./libft/libft.a
 
 test:
 	@make -C libft
-	clang test.c src/**/*.c -L./libft -lft -Ilibft -Iinclude
+	clang -g test.c src/*.c src/**/*.c -L./libft -lft -Ilibft -Iinclude
 
 all: $(NAME)
 
