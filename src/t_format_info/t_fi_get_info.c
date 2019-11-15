@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/12 20:15:50 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/15 15:57:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	precision(t_format_info *info, char **format)
 	{
 		info->has_precision = TRUE;
 		info->precision = precision;
+		while (ft_isdigit(**format))
+			(*format)++;
 	}
 }
 

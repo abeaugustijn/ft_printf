@@ -2,7 +2,6 @@ coverage
 .vscode
 *.a
 *.o
-libft
 a.out*
 
 .ccls

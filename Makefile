@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/12 21:47:12 by abe              ###   ########.fr        #
+#    Updated: 2019/11/15 15:17:47 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,8 @@ test:
 		$(FLAGS)\
 		$(CFILES)\
 		libft/*.c\
+		-I/Users/aaugusti/.brew/include\
+		-L/Users/aaugusti/.brew/lib\
 		-lcriterion\
 		-Wformat=0
 	./run_tests
