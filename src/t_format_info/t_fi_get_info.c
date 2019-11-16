@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/16 14:56:00 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/16 15:40:59 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ int		specifier(t_format_info *info, char **format)
 		info->type = CHAR;
 	else if (**format == 'i' || **format == 'd')
 		info->type = INT;
+	else if (**format == '%')
+		info->type = PERCENTAGE;
 	else
 		return (1);
 	return (0);

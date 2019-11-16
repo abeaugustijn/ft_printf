@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/12 20:15:09 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/16 15:44:47 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ void	output(t_format_info *info, va_list *args)
 		f_char(info, args);
 	else if (info->type == INT)
 		f_int(info, args);
+	else if (info->type == PERCENTAGE)
+		f_percentage();
 }

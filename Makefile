@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/16 11:52:18 by abe              ###   ########.fr        #
+#    Updated: 2019/11/16 15:43:13 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS			=\
 	t_format_info/t_fi_get_info\
 	formats/f_char\
 	formats/f_int\
-	formats/f_string
+	formats/f_string\
+	formats/f_percentage
 
 BONUS_SRCS		=	
 

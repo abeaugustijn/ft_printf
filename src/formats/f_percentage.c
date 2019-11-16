@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   formats.h                                          :+:      :+:    :+:   */
+/*   f_percentage.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:58:28 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/16 15:44:57 by abe              ###   ########.fr       */
+/*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
+/*   Updated: 2019/11/16 15:44:29 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORMATS_H
-# define FORMATS_H
-# include <ft_printf.h>
+#include <ft_printf.h>
+#include <t_format_info.h>
 
-void	f_string(t_format_info *info, va_list *args);
-void	f_char(t_format_info *info, va_list *args);
-void	f_int(t_format_info *info, va_list *args);
-void	f_percentage();
-
-#endif
+void	f_percentage()
+{
+	ft_putchar_fd('%', FD);
+}
