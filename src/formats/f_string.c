@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/16 18:43:30 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/16 21:07:52 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			f_string_putstr(t_format_info *info, char *str)
 		ft_putstr_fd(str, FD);
 }
 
-int				handle_null(t_format_info *info, char **str,
+int				f_string_handle_null(t_format_info *info, char **str,
 		unsigned int *str_len)
 {
 	if (*str != NULL)
@@ -37,7 +37,7 @@ int				handle_null(t_format_info *info, char **str,
 	return (1);
 }
 
-unsigned int	print_padding(t_format_info *info, unsigned int str_len)
+unsigned int	f_string_print_padding(t_format_info *info, unsigned int str_len)
 {
 	unsigned int	i;
 
@@ -53,7 +53,7 @@ unsigned int	print_padding(t_format_info *info, unsigned int str_len)
 	return (i);
 }
 
-unsigned int	get_strlen(t_format_info *info, char *str)
+unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 {
 	unsigned int	og_str_len;
 
@@ -71,11 +71,11 @@ void			f_string(t_format_info *info, va_list *args)
 	unsigned int	str_len;
 
 	str = (char *)va_arg(*args, char *);
-	str_len = get_strlen(info, str);
-	handle_null(info, &str, &str_len);
+	str_len = f_string_get_strlen(info, str);
+	f_string_handle_null(info, &str, &str_len);
 	if (info->left_align)
 		f_string_putstr(info, str);
-	print_padding(info, str_len);
+	f_string_print_padding(info, str_len);
 	if (!info->left_align)
 		f_string_putstr(info, str);
 }
