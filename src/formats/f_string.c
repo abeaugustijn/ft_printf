@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/16 15:19:11 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/16 18:43:30 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <formats.h>
 #include <libft.h>
 
-void	f_string_putstr(t_format_info *info, char *str)
+void			f_string_putstr(t_format_info *info, char *str)
 {
 	if (info->has_precision)
 		ft_putstr_n_fd(str, (size_t)info->precision, FD);
@@ -22,26 +22,60 @@ void	f_string_putstr(t_format_info *info, char *str)
 		ft_putstr_fd(str, FD);
 }
 
-void	f_string(t_format_info *info, va_list *args)
+int				handle_null(t_format_info *info, char **str,
+		unsigned int *str_len)
 {
-	char			*str;
-	unsigned int	str_len;
+	if (*str != NULL)
+		return (0);
+	if (info->has_precision && info->precision < 6)
+		*str = "";
+	else
+	{
+		*str = "(null)";
+		*str_len = 6;
+	}
+	return (1);
+}
+
+unsigned int	print_padding(t_format_info *info, unsigned int str_len)
+{
 	unsigned int	i;
 
-	str = (char *)va_arg(*args, char *);
-	str_len = info->has_precision ? info->precision :
-		(unsigned int)ft_strlen(str);
-	if (info->left_align)
-		f_string_putstr(info, str);
+	i = 0;
 	if (info->has_width && info->width > str_len)
 	{
-		i = 0;
 		while (i < info->width - str_len)
 		{
 			ft_putchar_fd(info->zero_pad ? '0' : ' ', 1);
 			i++;
 		}
 	}
+	return (i);
+}
+
+unsigned int	get_strlen(t_format_info *info, char *str)
+{
+	unsigned int	og_str_len;
+
+	if (str == NULL)
+		return (0);
+	og_str_len = ft_strlen(str);
+	if (info->has_precision && og_str_len > info->precision)
+		return (info->precision);
+	return (og_str_len);
+}
+
+void			f_string(t_format_info *info, va_list *args)
+{
+	char			*str;
+	unsigned int	str_len;
+
+	str = (char *)va_arg(*args, char *);
+	str_len = get_strlen(info, str);
+	handle_null(info, &str, &str_len);
+	if (info->left_align)
+		f_string_putstr(info, str);
+	print_padding(info, str_len);
 	if (!info->left_align)
 		f_string_putstr(info, str);
 }
