@@ -7,3 +7,4 @@ a.out*
 .ccls
 
 pft/
+test.c
