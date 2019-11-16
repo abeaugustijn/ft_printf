@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/15 15:17:47 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/11/16 11:52:18 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@echo "Linking lib"
-	@$(AR_COMMAND) $(NAME) $(OFILES)
+	@$(AR_COMMAND) $(NAME) $(OFILES) libft/*.o
 	@echo "Done"
 
 %.o: %.c libft

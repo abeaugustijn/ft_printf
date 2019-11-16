@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/11/12 20:14:14 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/16 11:27:19 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 void	f_int(t_format_info *info, va_list *args)
 {
-	int	to_put;
-	int	i;
-	int	int_len;
+	int				to_put;
+	unsigned int	i;
+	int				int_len;
 
 	to_put = (int)va_arg(*args, int);
 	if (info->left_align)

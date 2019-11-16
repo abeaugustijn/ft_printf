@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:10 by abe            #+#    #+#                */
-/*   Updated: 2019/11/12 15:21:35 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/16 14:36:16 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef int		t_var_type;
 # define UNDEFINED 8
 
 int				ft_printf(const char *format, ...);
-void			handle_format(char **format, va_list *args);
+int				handle_format(char **format, va_list *args);
 t_format_info	get_var_type(char *format);
 
 #endif

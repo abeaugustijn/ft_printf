@@ -20,21 +20,21 @@
 typedef int		t_var_type;
 # endif
 
-typedef struct	s_format_info
+typedef struct		s_format_info
 {
-	int			width;
-	t_var_type	type;
-	t_bool		has_width;
-	int			precision;
-	t_bool		has_precision;
-	t_bool		has_space;
-	t_bool		left_align;
-	t_bool		zero_pad;
-	t_bool		expect_precision_arg;
-	t_bool		expect_width_arg;
-	t_bool		force_sign;
-	t_bool		hex_identifier;
-}				t_format_info;
+	t_var_type		type;
+	unsigned int	width;
+	t_bool			has_width;
+	unsigned int	precision;
+	t_bool			has_precision;
+	t_bool			has_space;
+	t_bool			left_align;
+	t_bool			zero_pad;
+	t_bool			expect_precision_arg;
+	t_bool			expect_width_arg;
+	t_bool			force_sign;
+	t_bool			hex_identifier;
+}					t_format_info;
 
 t_format_info	*t_fi_create();
 int				t_fi_get_info(t_format_info	*info, char **format);

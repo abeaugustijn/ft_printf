@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:31:56 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/12 19:54:44 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/16 11:26:53 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	f_char(t_format_info *info, va_list *args)
 {
-	char	c;
-	int		i;
+	char			c;
+	unsigned int	i;
 
 	c = (char)va_arg(*args, int);
 	if (info->left_align)

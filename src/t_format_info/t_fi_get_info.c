@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/15 15:57:27 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/16 14:56:00 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,13 @@ void	width(t_format_info *info, char **format)
 **	- will check for a period
 **	- check for an asterisk
 **	- just run atoi
+**
+**	! should be interpreted as a non-negative decimal integer
 */
 
 void	precision(t_format_info *info, char **format)
 {
-	int	precision;
+	unsigned int	precision;
 
 	if (**format != '.')
 		return ;
@@ -89,14 +91,11 @@ void	precision(t_format_info *info, char **format)
 		(*format)++;
 		return ;
 	}
-	precision = ft_atoi(*format);
-	if (precision > 0)
-	{
-		info->has_precision = TRUE;
-		info->precision = precision;
-		while (ft_isdigit(**format))
-			(*format)++;
-	}
+	precision = ft_atoi_ui(*format);
+	info->has_precision = TRUE;
+	info->precision = precision;
+	while (ft_isdigit(**format))
+		(*format)++;
 }
 
 /*

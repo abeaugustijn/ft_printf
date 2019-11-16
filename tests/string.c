@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:47:53 by abe               #+#    #+#             */
-/*   Updated: 2019/11/15 15:38:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/16 11:29:28 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Test(standard, simple, .init=redirect_stdout)
 ** padding
 */
 
-Test(padding, simple, .init=redirect_stdout)
+Test(width, simple, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%5s\n", "simple");
@@ -49,7 +49,7 @@ Test(padding, simple, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, zero_fill, .init=redirect_stdout)
+Test(width, zero_fill, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%05s\n", "simple");
@@ -57,7 +57,7 @@ Test(padding, zero_fill, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, big, .init=redirect_stdout)
+Test(width, big, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%50s\n", "simple");
@@ -65,7 +65,7 @@ Test(padding, big, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, left_align, .init=redirect_stdout)
+Test(width, left_align, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%-5s\n", "simple");
@@ -73,7 +73,7 @@ Test(padding, left_align, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, left_align_and_zero, .init=redirect_stdout)
+Test(width, left_align_and_zero, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%-05s\n", "simple");
@@ -81,7 +81,7 @@ Test(padding, left_align_and_zero, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, zero, .init=redirect_stdout)
+Test(width, zero, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%0s\n", "simple");
@@ -89,7 +89,7 @@ Test(padding, zero, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, left_align_width_is_smaller, .init=redirect_stdout)
+Test(width, left_align_width_is_smaller, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%-3s\n", "simple");
@@ -97,7 +97,7 @@ Test(padding, left_align_width_is_smaller, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, negative, .init=redirect_stdout)
+Test(width, negative, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%--3s\n", "simple");
@@ -105,7 +105,7 @@ Test(padding, negative, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, int_overflow, .init=redirect_stdout)
+Test(width, int_overflow, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%999999999999s\n", "simple");
@@ -113,7 +113,7 @@ Test(padding, int_overflow, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, long_overflow, .init=redirect_stdout)
+Test(width, long_overflow, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%999999999999999999999999999s\n", "simple");
@@ -121,7 +121,7 @@ Test(padding, long_overflow, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, neg_int_overflow, .init=redirect_stdout)
+Test(width, neg_int_overflow, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%--999999999999s\n", "simple");
@@ -129,7 +129,7 @@ Test(padding, neg_int_overflow, .init=redirect_stdout)
 	cr_assert_stdout_eq_str(res);
 }
 
-Test(padding, neg_long_overflow, .init=redirect_stdout)
+Test(width, neg_long_overflow, .init=redirect_stdout)
 {
 	char res[1000];
 	ft_printf("%--999999999999999999999999999s\n", "simple");

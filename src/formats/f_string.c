@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/15 15:43:35 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/16 15:19:11 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ void	f_string_putstr(t_format_info *info, char *str)
 
 void	f_string(t_format_info *info, va_list *args)
 {
-	char	*str;
-	int		str_len;
-	int		i;
+	char			*str;
+	unsigned int	str_len;
+	unsigned int	i;
 
 	str = (char *)va_arg(*args, char *);
-	str_len = (int)ft_strlen(str);
+	str_len = info->has_precision ? info->precision :
+		(unsigned int)ft_strlen(str);
 	if (info->left_align)
 		f_string_putstr(info, str);
-	if (info->has_width)
+	if (info->has_width && info->width > str_len)
 	{
 		i = 0;
 		while (i < info->width - str_len)
