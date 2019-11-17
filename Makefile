@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/16 15:43:13 by abe              ###   ########.fr        #
+#    Updated: 2019/11/16 21:30:25 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS			=\
 	t_format_info/t_fi_check_width_precision\
 	t_format_info/t_fi_create\
 	t_format_info/t_fi_get_info\
+	t_format_info/t_fi_handle_sign\
+	t_format_info/t_fi_handle_plus_space\
 	formats/f_char\
 	formats/f_int\
 	formats/f_string\
