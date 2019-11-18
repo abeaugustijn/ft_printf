@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/11/18 14:16:57 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/18 20:07:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include <stdarg.h>
 #include <t_format_info.h>
 
-void			f_int_putnbr(t_format_info *info, int to_put)
+void			f_int_putnbr(t_format_info *info, t_bool is_neg,
+		long long int to_put)
 {
 	unsigned int	og_intlen;
 	unsigned int	i;
 
-	og_intlen = ft_intlen(to_put);
+	og_intlen = ft_ull_len(to_put);
 	if (info->has_space)
 		ft_putchar_fd(' ', FD);
 	if (info->force_sign && to_put > 0)
@@ -63,20 +64,22 @@ unsigned int	f_int_print_padding(t_format_info* info, unsigned int int_len)
 
 int				f_int(t_format_info *info, va_list *args)
 {
-	int				to_put;
+	long long int	to_put;
 	unsigned int	int_len;
 	int				res;
+	t_bool			is_neg;
 
 	res = 0;
 	to_put = (int)va_arg(*args, int);
 	t_fi_handle_sign(info, to_put);
 	t_fi_handle_plus_space(info);
-	to_put = to_put < 0 ? to_put * -1 : to_put;
+	is_neg = to_put < 0;
+	to_put = is_neg ? to_put * -1 : to_put;
 	if (info->left_align)
-		ft_putnbr_fd(to_put, FD);
+		ft_putnbr_fd(to_put, is_neg, FD);
 	int_len = f_int_get_intlen(info, to_put);
 	f_int_print_padding(info, int_len);
 	if (!info->left_align)
-		ft_putnbr_fd(to_put, FD);
+		ft_putnbr_fd(to_put, is_neg, FD);
 	return (res);
 }
