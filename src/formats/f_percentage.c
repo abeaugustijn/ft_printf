@@ -6,14 +6,15 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
-/*   Updated: 2019/11/16 15:44:29 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/18 14:17:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 #include <t_format_info.h>
 
-void	f_percentage()
+int		f_percentage()
 {
 	ft_putchar_fd('%', FD);
+	return (1);
 }

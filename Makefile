@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/18 11:43:05 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/11/18 16:14:59 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,14 @@ SRCS			=\
 	t_format_info/t_fi_get_info\
 	t_format_info/t_fi_handle_sign\
 	t_format_info/t_fi_handle_plus_space\
+	t_format_info/t_fi_handle_zero_space\
 	formats/f_char\
 	formats/f_int\
 	formats/f_string\
-	formats/f_percentage
+	formats/f_percentage\
+	utils/ft_putchar_fd_count\
+	utils/ft_putstr_fd_count\
+	utils/ft_putstr_n_fd_count
 
 BONUS_SRCS		=	
 
@@ -55,7 +59,7 @@ $(NAME): $(OFILES)
 
 %.o: %.c libft/libft.a
 	@echo "Compiling: $<"
-	@gcc -o $@ -c $< $(FLAGS) -I $(INCLUDES)
+	@gcc -g -o $@ -c $< $(FLAGS) -I $(INCLUDES)
 
 clean: _clean
 	@echo "Cleaning..."

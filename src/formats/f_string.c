@@ -6,38 +6,25 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/16 22:19:00 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/18 16:15:22 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 #include <formats.h>
 #include <libft.h>
+#include <utils.h>
 
-void			f_string_putstr(t_format_info *info, char *str)
+void			f_string_putstr(t_format_info *info, char *str, int *res)
 {
 	if (info->has_precision)
-		ft_putstr_n_fd(str, (size_t)info->precision, FD);
+		ft_putstr_n_fd_count(str, (size_t)info->precision, FD, res);
 	else
-		ft_putstr_fd(str, FD);
+		ft_putstr_fd_count(str, FD, res);
 }
 
-int				f_string_handle_null(t_format_info *info, char **str,
-		unsigned int *str_len)
-{
-	if (*str != NULL)
-		return (0);
-	if (info->has_precision && info->precision < 6)
-		*str = "";
-	else
-	{
-		*str = "(null)";
-		*str_len = 6;
-	}
-	return (1);
-}
-
-unsigned int	f_string_print_padding(t_format_info *info, unsigned int str_len)
+unsigned int	f_string_print_padding(t_format_info *info,
+		unsigned int str_len, int *res)
 {
 	unsigned int	i;
 
@@ -46,7 +33,7 @@ unsigned int	f_string_print_padding(t_format_info *info, unsigned int str_len)
 	{
 		while (i < info->width - str_len)
 		{
-			ft_putchar_fd(info->zero_pad ? '0' : ' ', 1);
+			ft_putchar_fd_count(info->zero_pad ? '0' : ' ', 1, res);
 			i++;
 		}
 	}
@@ -65,17 +52,22 @@ unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 	return (og_str_len);
 }
 
-void			f_string(t_format_info *info, va_list *args)
+int				f_string(t_format_info *info, va_list *args)
 {
 	char			*str;
 	unsigned int	str_len;
+	int				res;
 
+	res = 0;
+	t_fi_handle_zero_space(info);
 	str = (char *)va_arg(*args, char *);
+	if (str == NULL)
+		str = "(null)";
 	str_len = f_string_get_strlen(info, str);
-	f_string_handle_null(info, &str, &str_len);
 	if (info->left_align)
-		f_string_putstr(info, str);
-	f_string_print_padding(info, str_len);
+		f_string_putstr(info, str, &res);
+	f_string_print_padding(info, str_len, &res);
 	if (!info->left_align)
-		f_string_putstr(info, str);
+		f_string_putstr(info, str, &res);
+	return (res);
 }

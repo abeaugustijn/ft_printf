@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/11/18 13:37:46 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:16:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ unsigned int	f_int_print_padding(t_format_info* info, unsigned int int_len)
 	return (i);
 }
 
-void			f_int(t_format_info *info, va_list *args)
+int				f_int(t_format_info *info, va_list *args)
 {
 	int				to_put;
 	unsigned int	int_len;
+	int				res;
 
+	res = 0;
 	to_put = (int)va_arg(*args, int);
 	t_fi_handle_sign(info, to_put);
 	t_fi_handle_plus_space(info);
@@ -76,4 +78,5 @@ void			f_int(t_format_info *info, va_list *args)
 	f_int_print_padding(info, int_len);
 	if (!info->left_align)
 		ft_putnbr_fd(to_put, FD);
+	return (res);
 }

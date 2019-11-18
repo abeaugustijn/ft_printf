@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/16 15:40:59 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/18 16:31:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void	flags(t_format_info *info, char **format)
 		if (**format == '-')
 			info->left_align = TRUE;
 		else if (**format == '0')
+		{
+			if (!ft_inset("-+# ", *(*format + 1)))
+				return ;
 			info->zero_pad = TRUE;
+		}
 		else if (**format == '+')
 			info->force_sign = TRUE;
 		else if (**format == '#')
@@ -83,16 +87,15 @@ void	precision(t_format_info *info, char **format)
 
 	if (**format != '.')
 		return ;
+	info->has_precision = TRUE;
 	(*format)++;
 	if (**format == '*')
 	{
 		info->expect_precision_arg = TRUE;
-		info->has_precision = TRUE;
 		(*format)++;
 		return ;
 	}
 	precision = ft_atoi_ui(*format);
-	info->has_precision = TRUE;
 	info->precision = precision;
 	while (ft_isdigit(**format))
 		(*format)++;

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   formats.h                                          :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:58:28 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/18 14:10:42 by aaugusti         ###   ########.fr       */
+/*   Created: 2019/11/18 14:13:27 by aaugusti          #+#    #+#             */
+/*   Updated: 2019/11/18 15:17:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORMATS_H
-# define FORMATS_H
-# include <ft_printf.h>
+#ifndef UTILS_H
+# define UTILS_H
 
-int		f_string(t_format_info *info, va_list *args);
-int		f_char(t_format_info *info, va_list *args);
-int		f_int(t_format_info *info, va_list *args);
-int		f_percentage();
+void	ft_putchar_fd_count(char c, int fd, int *count);
+void	ft_putstr_fd_count(char *str, int fd, int *res);
+void	ft_putstr_n_fd_count(char *str, int n, int fd, int *res);
 
 #endif
