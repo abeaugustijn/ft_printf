@@ -6,19 +6,15 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/11/16 21:29:56 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/18 13:59:42 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_FORMAT_INFO_H
 # define T_FORMAT_INFO_H
-# include <ft_printf.h>
 # include <libft.h>
-
-# ifndef T_VAR_TYPE
-#  define T_VAR_TYPE
-typedef int		t_var_type;
-# endif
+# include <ft_printf.h>
+# include <t_var_type.h>
 
 typedef struct		s_format_info
 {
