@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/16 21:30:25 by abe              ###   ########.fr        #
+#    Updated: 2019/11/18 11:43:05 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,9 @@ INCLUDES		=	include -I libft
 
 FLAGS			=	-Wall -Werror -Wextra
 
-AR_COMMAND		= ar rs
+AR_COMMAND		=	ar rs
 
-LIBFT_DIR		= ./libft
+LIBFT_DIR		=	./libft
 
 all: $(NAME)
 
@@ -53,9 +53,9 @@ $(NAME): $(OFILES)
 	@$(AR_COMMAND) $(NAME) $(OFILES) libft/*.o
 	@echo "Done"
 
-%.o: %.c libft
+%.o: %.c libft/libft.a
 	@echo "Compiling: $<"
-	@gcc -o $@ -c $< $(FLAGS) -I $(INCLUDES) -lft -Llibft
+	@gcc -o $@ -c $< $(FLAGS) -I $(INCLUDES)
 
 clean: _clean
 	@echo "Cleaning..."
@@ -76,6 +76,9 @@ bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 	@echo "Linking bonus lib"
 	@$(AR_COMMAND) $(NAME) $(OFILES) $(BONUS_OFILES)
 	@echo "Bonus done"
+
+libft/libft.a:
+	make -C libft
 
 test:
 	@gcc -o run_tests\
