@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/11/18 16:31:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/19 10:52:32 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ void	flags(t_format_info *info, char **format)
 		if (**format == '-')
 			info->left_align = TRUE;
 		else if (**format == '0')
-		{
-			if (!ft_inset("-+# ", *(*format + 1)))
-				return ;
 			info->zero_pad = TRUE;
-		}
 		else if (**format == '+')
 			info->force_sign = TRUE;
 		else if (**format == '#')
@@ -130,8 +126,15 @@ int		specifier(t_format_info *info, char **format)
 
 int		t_fi_get_info(t_format_info	*info, char **format)
 {
+	int	res;
+
+	res = 0;
 	flags(info, format);
 	width(info, format);
 	precision(info, format);
-	return (specifier(info, format));
+	res = specifier(info, format);
+	t_fi_handle_plus_space(info);
+	t_fi_handle_zero_minus(info);
+	t_fi_handle_zero_space(info);
+	return (res);
 }

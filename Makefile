@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/18 16:14:59 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/11/19 14:15:27 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS			=\
 	t_format_info/t_fi_get_info\
 	t_format_info/t_fi_handle_sign\
 	t_format_info/t_fi_handle_plus_space\
-	t_format_info/t_fi_handle_zero_space\
+	t_format_info/t_fi_handle_zero_minus\
 	formats/f_char\
 	formats/f_int\
 	formats/f_string\
@@ -45,6 +45,7 @@ TESTS_OFILES	=	$(TESTS_SRCS:%=tests/%.o)
 INCLUDES		=	include -I libft
 
 FLAGS			=	-Wall -Werror -Wextra
+#FLAGS			=
 
 AR_COMMAND		=	ar rs
 
