@@ -6,12 +6,16 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
-/*   Updated: 2019/11/18 14:17:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:05:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 #include <t_format_info.h>
+
+/*
+**	Handle the precentage format
+*/
 
 int		f_percentage()
 {

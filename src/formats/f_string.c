@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/18 16:15:22 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:05:39 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 #include <libft.h>
 #include <utils.h>
 
+/*
+**	Output the string
+*/
+
 void			f_string_putstr(t_format_info *info, char *str, int *res)
 {
 	if (info->has_precision)
@@ -22,6 +26,11 @@ void			f_string_putstr(t_format_info *info, char *str, int *res)
 	else
 		ft_putstr_fd_count(str, FD, res);
 }
+
+/*
+**	Pring the right amount and the right type of padding before or after the
+**	string.
+*/
 
 unsigned int	f_string_print_padding(t_format_info *info,
 		unsigned int str_len, int *res)
@@ -40,6 +49,10 @@ unsigned int	f_string_print_padding(t_format_info *info,
 	return (i);
 }
 
+/*
+**	Get the strings length and take precision into account.
+*/
+
 unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 {
 	unsigned int	og_str_len;
@@ -52,6 +65,10 @@ unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 	return (og_str_len);
 }
 
+/*
+**	Function to output a string with different format rules.
+*/
+
 int				f_string(t_format_info *info, va_list *args)
 {
 	char			*str;
@@ -59,7 +76,6 @@ int				f_string(t_format_info *info, va_list *args)
 	int				res;
 
 	res = 0;
-	t_fi_handle_zero_space(info);
 	str = (char *)va_arg(*args, char *);
 	if (str == NULL)
 		str = "(null)";

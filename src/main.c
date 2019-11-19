@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:49:25 by abe               #+#    #+#             */
-/*   Updated: 2019/11/18 14:14:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:07:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <utils.h>
 
 /*
+**
 **	%[flags][width][.precision][length]specifier
+**
 */
 
 int		ft_printf(const char *format, ...)

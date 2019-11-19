@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:49:53 by abe               #+#    #+#             */
-/*   Updated: 2019/11/16 21:19:52 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/19 16:03:00 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <t_format_info.h>
 #include <libft.h>
 #include <stdlib.h>
+
+/*
+**	Generate a new object which contains information about a format string
+*/
 
 t_format_info	*t_fi_create()
 {
@@ -34,6 +38,5 @@ t_format_info	*t_fi_create()
 	res->has_width = FALSE;
 	res->width = 0;
 	res->zero_pad = FALSE;
-	res->has_sign = FALSE;
 	return (res);
 }

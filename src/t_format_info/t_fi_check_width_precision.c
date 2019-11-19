@@ -6,13 +6,18 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 19:50:18 by abe               #+#    #+#             */
-/*   Updated: 2019/11/12 19:54:10 by abe              ###   ########.fr       */
+/*   Updated: 2019/11/19 16:02:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 #include <t_format_info.h>
 #include <stdarg.h>
+
+/*
+**	Get the next argument if there is a '*' flag for with or precision set.
+**	The value gets stored in the info object.
+*/
 
 void			t_fi_check_width_precision(t_format_info *info, va_list *args)
 {

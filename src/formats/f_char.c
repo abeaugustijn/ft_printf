@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:31:56 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/18 14:16:51 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:06:41 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <formats.h>
 #include <stdarg.h>
 #include <utils.h>
+
+/*
+**	The format function for a single character. Has to take width into account.
+*/
 
 int		f_char(t_format_info *info, va_list *args)
 {
