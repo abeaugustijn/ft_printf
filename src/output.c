@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/18 14:24:00 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:31:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@ int		output(t_format_info *info, va_list *args)
 		return (f_int(info, args));
 	else if (info->type == PERCENTAGE)
 		return (f_percentage());
+	else if (info->type == HEX_UP)
+		return (f_hex(info, args, TRUE));
+	else if (info->type == HEX_LOW)
+		return (f_hex(info, args, FALSE));
 	return (0);
 }
