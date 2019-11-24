@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/22 15:27:32 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/11/23 18:11:17 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ $(NAME): $(OFILES)
 
 %.o: %.c libft/libft.a
 	@echo "Compiling: $<"
-	@gcc -g -o $@ -c $< $(FLAGS) -I $(INCLUDES)
+	@clang -g -o $@ -c $< $(FLAGS) -I $(INCLUDES)
 
 clean: _clean
 	@echo "Cleaning..."
@@ -75,7 +75,6 @@ _clean:
 	@rm -f $(OFILES) $(BONUS_OFILES)
 
 re: fclean all 
-	@make re -C libft
 
 bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 	@echo "Linking bonus lib"
@@ -85,8 +84,16 @@ bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 libft/libft.a:
 	make -C libft
 
+main:
+	@clang -g -o main\
+		-I $(INCLUDES)\
+		$(FLAGS)\
+		$(CFILES)\
+		libft/*.c\
+		main.c
+
 test:
-	@gcc -o run_tests\
+	@clang -o run_tests\
 		-I $(INCLUDES)\
 		$(TESTS_CFILES)\
 		$(FLAGS)\

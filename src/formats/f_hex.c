@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 16:11:57 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/22 15:32:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/23 18:03:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <t_format_info.h>
 #include <libft.h>
 #include <utils.h>
+#include <stdlib.h>
 
 /*
 **	Print the integer. This is only the non-whitespace part of the int.
@@ -22,7 +23,7 @@
 **		always a minus
 */
 
-void			f_hex_print(t_format_info *info, int to_put, t_bool cap
+void			f_hex_print(t_format_info *info, int to_put, t_bool cap,
 		unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
