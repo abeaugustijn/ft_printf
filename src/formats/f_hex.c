@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 16:11:57 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/25 15:42:07 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:06:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void			f_hex_print(t_format_info *info, unsigned int to_put,
 			i++;
 		}
 	}
+	if (info->hex_identifier && to_put != 0)
+		ft_putstr_fd(cap ? "0X" : "0x", FD);
 	ft_puthex_fd(to_put, FD, cap);
 }
 
@@ -83,6 +85,8 @@ unsigned int	f_hex_get_print_len(t_format_info *info, unsigned int to_put)
 		return (res);
 	if (info->zero_pad && info->has_width)
 		res = info->width > og_hexlen ? info->width : og_hexlen;
+	/*if (info->hex_identifier)*/
+		/*res += 2;*/
 	return (res);
 }
 
