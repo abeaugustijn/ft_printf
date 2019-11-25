@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 16:11:57 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/23 18:03:52 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:42:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 **		always a minus
 */
 
-void			f_hex_print(t_format_info *info, int to_put, t_bool cap,
-		unsigned int print_len, int *res)
+void			f_hex_print(t_format_info *info, unsigned int to_put,
+		t_bool cap, unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
 	int				n_zero;
@@ -40,7 +40,7 @@ void			f_hex_print(t_format_info *info, int to_put, t_bool cap,
 	else if (info->has_space)
 		ft_putchar_fd_count(' ', FD, res);
 	n_zero = print_len - ((is_neg || info->force_sign || info->has_space)
-		? 1 : 0) - ft_intlen(to_put);
+		? 1 : 0) - ft_hexlen(to_put);
 	if (n_zero > 0)
 	{
 		i = 0;
@@ -56,25 +56,25 @@ void			f_hex_print(t_format_info *info, int to_put, t_bool cap,
 /*
 **	Get the amount of non-whitespace bytes that will be printed.
 **	- in the case that width is set and there is a zero flag return the largest
-**		of og_intlen and width.
-**	- if precision is set and precision is larger than og_intlen return pre-
+**		of og_hexlen and width.
+**	- if precision is set and precision is larger than og_hexlen return pre-
 **		cision.
 **		* also, if to_put is negative add a byte for the minus
 **	- precision overwrites width
 */
 
-unsigned int	f_hex_get_print_len(t_format_info *info, int to_put)
+unsigned int	f_hex_get_print_len(t_format_info *info, unsigned int to_put)
 {
-	size_t			og_intlen;
+	size_t			og_hexlen;
 	unsigned int	is_neg;
 	unsigned int	res;
 
 	is_neg = to_put < 0;
 	if (is_neg)
 		to_put *= -1;
-	og_intlen = ft_intlen(to_put);
-	res = og_intlen;
-	if (info->has_precision && info->precision > og_intlen)
+	og_hexlen = ft_hexlen(to_put);
+	res = og_hexlen;
+	if (info->has_precision && info->precision > og_hexlen)
 		res = res > info->precision ? res : info->precision;
 	/*if (info->precision == res && (is_neg || info->force_sign))*/
 	if (is_neg || info->force_sign || info->has_space)
@@ -82,23 +82,23 @@ unsigned int	f_hex_get_print_len(t_format_info *info, int to_put)
 	if (info->has_precision && info->has_width)
 		return (res);
 	if (info->zero_pad && info->has_width)
-		res = info->width > og_intlen ? info->width : og_intlen;
+		res = info->width > og_hexlen ? info->width : og_hexlen;
 	return (res);
 }
 
 /*
-**	The format function for formats of the type integer printed as hex.
+**	The format function for formats of the type unsigned integer printed as hex.
 */
 
 int				f_hex(t_format_info *info, t_bool cap, va_list *args)
 {
-	int				to_put;
+	unsigned int	to_put;
 	int				res;
 	unsigned int	print_len;
 	unsigned int	i;
 
 	res = 0;
-	to_put = (int)va_arg(*args, int);
+	to_put = (unsigned int)va_arg(*args, unsigned int);
 	print_len = f_hex_get_print_len(info, to_put);
 	if (info->left_align)
 		f_hex_print(info, to_put, cap, print_len, &res);

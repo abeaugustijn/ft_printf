@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/23 18:11:17 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/11/25 15:26:53 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,8 +84,9 @@ bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 libft/libft.a:
 	make -C libft
 
-main:
+main: main.c
 	@clang -g -o main\
+		-Wall -Werror -Wextra\
 		-I $(INCLUDES)\
 		$(FLAGS)\
 		$(CFILES)\
