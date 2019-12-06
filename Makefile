@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/11/25 15:26:53 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/12/06 14:59:37 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			=\
 	formats/f_string\
 	formats/f_percentage\
 	formats/f_hex\
+	formats/f_pointer\
 	utils/ft_putchar_fd_count\
 	utils/ft_putstr_fd_count\
 	utils/ft_putstr_n_fd_count

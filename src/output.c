@@ -6,11 +6,12 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/23 17:58:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 14:56:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
+#include <libft.h>
 #include <formats.h>
 #include <stdarg.h>
 
@@ -28,5 +29,7 @@ int		output(t_format_info *info, va_list *args)
 		return (f_hex(info, TRUE, args));
 	else if (info->type == HEX_LOW)
 		return (f_hex(info, FALSE, args));
+	else if (info->type == POINTER)
+		return (f_pointer(info, args));
 	return (0);
 }
