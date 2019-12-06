@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/12/06 14:59:37 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/12/06 10:45:18 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS			=\
 	formats/f_pointer\
 	utils/ft_putchar_fd_count\
 	utils/ft_putstr_fd_count\
-	utils/ft_putstr_n_fd_count
+	utils/ft_putstr_n_fd_count\
+	sizes/sz_int
 
 BONUS_SRCS		=	
 
@@ -84,6 +85,7 @@ bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 
 libft/libft.a:
 	make -C libft
+	make bonus -C libft
 
 main: main.c
 	@clang -g -o main\
