@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/06 10:32:48 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 11:37:08 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void			f_int_print(t_format_info *info, long long to_put,
 			i++;
 		}
 	}
-	ft_putnbr_ll_fd(to_put, FD);
+	if(!(info->has_precision && !info->precision))
+		ft_putnbr_ll_fd(to_put, FD);
 }
 
 /*
@@ -75,8 +76,9 @@ unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 	og_intlen = ft_intlen(to_put);
 	res = og_intlen;
 	if (info->has_precision && info->precision > og_intlen)
-		res = res > info->precision ? res : info->precision;
-	/*if (info->precision == res && (is_neg || info->force_sign))*/
+		res = info->precision;
+	if (info->has_precision && !info->precision && !to_put)
+		res = 0;
 	if (is_neg || info->force_sign || info->has_space)
 		res++;
 	if (info->has_precision && info->has_width)
