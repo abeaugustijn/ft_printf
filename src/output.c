@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 14:56:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:54:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int		output(t_format_info *info, va_list *args)
 		return (f_hex(info, FALSE, args));
 	else if (info->type == POINTER)
 		return (f_pointer(info, args));
+	else if (info->type == UNSIGNED)
+		return (f_unsigned(info, args));
 	return (0);
 }

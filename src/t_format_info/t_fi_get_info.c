@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/12/06 15:38:04 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:24:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ int		specifier(t_format_info *info, char **format)
 		info->type = HEX_LOW;
 	else if (**format == 'p')
 		info->type = POINTER;
+	else if (**format == 'u')
+		info->type = UNSIGNED;
 	else
 		return (1);
 	return (0);
