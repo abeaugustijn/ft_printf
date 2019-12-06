@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 16:11:57 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 14:53:10 by aaugusti         ###   ########.fr       */
+/*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
+/*   Updated: 2019/12/06 11:47:20 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <ft_printf.h>
 #include <stdarg.h>
@@ -41,11 +42,11 @@ void			f_hex_print(t_format_info *info, unsigned int to_put,
 		ft_putchar_fd_count(is_neg ? '-' : '+', FD, res);
 	else if (info->has_space)
 		ft_putchar_fd_count(' ', FD, res);
-	n_zero = print_len - ((is_neg || info->force_sign || info->has_space)
-			? 1 : 0) - ft_hexlen(to_put) - ((info->hex_identifier && to_put > 0) ? 2 : 0);
 	if (info->hex_identifier && to_put != 0)
 		ft_putstr_fd(cap ? "0X" : "0x", FD);
-	if (n_zero > 0 && (info->has_precision && info->precision > 0))
+	n_zero = print_len - (is_neg || info->force_sign || info->has_space)
+		- ft_hexlen(to_put) - ((info->hex_identifier && to_put) ? 2 : 0);
+	if (n_zero > 0)
 	{
 		i = 0;
 		while (i < n_zero)
@@ -78,9 +79,11 @@ unsigned int	f_hex_get_print_len(t_format_info *info, unsigned int to_put)
 		to_put *= -1;
 	og_hexlen = ft_hexlen(to_put);
 	res = og_hexlen;
-	if (info->has_precision && info->precision > og_hexlen)
-		res = res > info->precision ? res : info->precision;
-	if (info->hex_identifier && to_put != 0)
+	if (info->has_precision && !info->precision)
+		return (0);
+	if (info->has_precision && (info->precision > og_hexlen))
+		res = info->precision;
+	if (info->hex_identifier && to_put)
 		res += 2;
 	if (is_neg || info->force_sign || info->has_space)
 		res++;
