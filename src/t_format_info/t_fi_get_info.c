@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:55:14 by abe               #+#    #+#             */
-/*   Updated: 2019/12/06 14:42:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:38:04 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,39 @@ int		specifier(t_format_info *info, char **format)
 }
 
 /*
+**	Retrieves the size flag for format strings.
+*/
+
+void	size(t_format_info *info, char **format)
+{
+	if (**format == 'l')
+	{
+		info->has_size = TRUE;
+		if ((*format)[1] == 'l')
+		{
+			info->size = LL;
+			(*format)++;
+		}
+		else
+			info->size = L;
+		(*format)++;
+		return ;
+	}
+	if (**format == 'h')
+	{
+		info->has_size = TRUE;
+		if ((*format)[1] == 'h')
+		{
+			info->size = HH;
+			(*format)++;
+		}
+		else
+			info->size = H;
+		(*format)++;
+	}
+}
+
+/*
 **	Retrieves the info of a format 'snippet'
 **
 **	info:	format_info struct to store the info in
@@ -138,6 +171,7 @@ int		t_fi_get_info(t_format_info	*info, char **format)
 	flags(info, format);
 	width(info, format);
 	precision(info, format);
+	size(info, format);
 	res = specifier(info, format);
 	t_fi_handle_plus_space(info);
 	t_fi_handle_zero_minus(info);

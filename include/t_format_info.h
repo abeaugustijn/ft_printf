@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/11/19 15:46:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:29:32 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 # include <libft.h>
 # include <ft_printf.h>
 # include <t_var_type.h>
+# include <t_size.h>
 
 typedef struct		s_format_info
 {
 	t_var_type		type;
+	t_size			size;
 	unsigned int	width;
 	t_bool			has_width;
 	unsigned int	precision;
 	t_bool			has_precision;
+	t_bool			has_size;
 	t_bool			has_space;
 	t_bool			left_align;
 	t_bool			zero_pad;

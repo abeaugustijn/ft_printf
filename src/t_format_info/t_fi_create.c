@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:49:53 by abe               #+#    #+#             */
-/*   Updated: 2019/11/19 16:03:00 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:30:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ t_format_info	*t_fi_create()
 	res->has_width = FALSE;
 	res->width = 0;
 	res->zero_pad = FALSE;
+	res->size = 0;
+	res->has_size = FALSE;
 	return (res);
 }
