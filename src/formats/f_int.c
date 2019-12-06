@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/11/19 14:07:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 10:32:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <t_format_info.h>
 #include <libft.h>
 #include <utils.h>
+#include <sizes.h>
 
 /*
 **	Print the integer. This is only the non-whitespace part of the int.
@@ -22,7 +23,7 @@
 **		always a minus
 */
 
-void			f_int_print(t_format_info *info, int to_put,
+void			f_int_print(t_format_info *info, long long to_put,
 		unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
@@ -49,7 +50,7 @@ void			f_int_print(t_format_info *info, int to_put,
 			i++;
 		}
 	}
-	ft_putnbr_fd(to_put, FD);
+	ft_putnbr_ll_fd(to_put, FD);
 }
 
 /*
@@ -62,7 +63,7 @@ void			f_int_print(t_format_info *info, int to_put,
 **	- precision overwrites width
 */
 
-unsigned int	f_int_get_print_len(t_format_info *info, int to_put)
+unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 {
 	size_t			og_intlen;
 	unsigned int	is_neg;
@@ -91,13 +92,13 @@ unsigned int	f_int_get_print_len(t_format_info *info, int to_put)
 
 int				f_int(t_format_info *info, va_list *args)
 {
-	int				to_put;
+	long long int	to_put;
 	int				res;
 	unsigned int	print_len;
 	unsigned int	i;
 
 	res = 0;
-	to_put = (int)va_arg(*args, int);
+	to_put = sz_int(info, args);
 	print_len = f_int_get_print_len(info, to_put);
 	if (info->left_align)
 		f_int_print(info, to_put, print_len, &res);
