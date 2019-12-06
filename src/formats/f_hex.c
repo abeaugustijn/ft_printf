@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 15:11:43 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 17:05:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 	if (is_neg)
 		to_put *= -1;
 	use_width = info->has_width && (info->width > info->precision);
-	if (info->has_precision && !info->precision)
+	if (info->has_precision && !info->precision && info->type != POINTER)
 		return ;
 	if (is_neg || info->force_sign)
 		ft_putchar_fd_count(is_neg ? '-' : '+', FD, res);
@@ -57,6 +57,7 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 			i++;
 		}
 	}
+	if (!(info->type == POINTER && info->has_precision && !info->precision))
 	ft_puthex_fd(to_put, FD, cap);
 }
 
@@ -82,7 +83,7 @@ unsigned int	f_hex_get_print_len(t_format_info *info,
 		to_put *= -1;
 	og_hexlen = ft_hexlen(to_put);
 	res = og_hexlen;
-	if (info->has_precision && !info->precision)
+	if (info->has_precision && !info->precision && info->type != POINTER)
 		return (0);
 	if (info->has_precision && (info->precision > og_hexlen))
 		res = info->precision;
