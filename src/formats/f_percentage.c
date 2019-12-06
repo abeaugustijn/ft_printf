@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
-/*   Updated: 2019/11/19 16:05:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 14:55:42 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,22 @@
 **	Handle the precentage format
 */
 
-int		f_percentage()
+int		f_percentage(t_format_info *info)
 {
-	ft_putchar_fd('%', FD);
-	return (1);
+	unsigned int	i;
+
+	if (info->left_align)
+			ft_putchar_fd('%', FD);
+	i = 0;
+	if (info->has_width && info->width > 0)
+	{
+		while (i < info->width - 1)
+		{
+			ft_putchar_fd(info->zero_pad ? '0' : ' ', FD);
+			i++;
+		}
+	}
+	if (!info->left_align)
+			ft_putchar_fd('%', FD);
+	return (i + 1);
 }

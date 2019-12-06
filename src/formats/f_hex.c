@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 11:57:10 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:11:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 		ft_putchar_fd_count(is_neg ? '-' : '+', FD, res);
 	else if (info->has_space)
 		ft_putchar_fd_count(' ', FD, res);
-	if (info->hex_identifier && to_put != 0)
+	if (info->hex_identifier)
 		ft_putstr_fd(cap ? "0X" : "0x", FD);
 	n_zero = print_len - (is_neg || info->force_sign || info->has_space)
-		- ft_hexlen(to_put) - ((info->hex_identifier && to_put) ? 2 : 0);
+		- ft_hexlen(to_put) - ((info->hex_identifier && (to_put ||
+		info->type == POINTER)) ? 2 : 0);
 	if (n_zero > 0)
 	{
 		i = 0;
@@ -85,7 +86,7 @@ unsigned int	f_hex_get_print_len(t_format_info *info,
 		return (0);
 	if (info->has_precision && (info->precision > og_hexlen))
 		res = info->precision;
-	if (info->hex_identifier && to_put)
+	if (info->hex_identifier)
 		res += 2;
 	if (is_neg || info->force_sign || info->has_space)
 		res++;
@@ -98,6 +99,7 @@ unsigned int	f_hex_get_print_len(t_format_info *info,
 
 /*
 **	The format function for formats of the type unsigned integer printed as hex.
+**	Also implements support for pointers.
 */
 
 int				f_hex(t_format_info *info, t_bool cap, va_list *args)
@@ -109,6 +111,8 @@ int				f_hex(t_format_info *info, t_bool cap, va_list *args)
 
 	res = 0;
 	to_put = sz_hex(info, args);
+	if (!to_put && info->type != POINTER)
+		info->hex_identifier = FALSE;
 	print_len = f_hex_get_print_len(info, to_put);
 	if (info->left_align)
 		f_hex_print(info, to_put, cap, print_len, &res);
