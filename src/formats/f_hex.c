@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 11:47:20 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/06 11:57:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <libft.h>
 #include <utils.h>
 #include <stdlib.h>
+#include <sizes.h>
 
 /*
 **	Print the integer. This is only the non-whitespace part of the int.
@@ -24,7 +25,7 @@
 **		always a minus
 */
 
-void			f_hex_print(t_format_info *info, unsigned int to_put,
+void			f_hex_print(t_format_info *info, unsigned long long to_put,
 		t_bool cap, unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
@@ -68,7 +69,8 @@ void			f_hex_print(t_format_info *info, unsigned int to_put,
 **	- precision overwrites width
 */
 
-unsigned int	f_hex_get_print_len(t_format_info *info, unsigned int to_put)
+unsigned int	f_hex_get_print_len(t_format_info *info,
+		unsigned long long to_put)
 {
 	size_t			og_hexlen;
 	unsigned int	is_neg;
@@ -100,13 +102,13 @@ unsigned int	f_hex_get_print_len(t_format_info *info, unsigned int to_put)
 
 int				f_hex(t_format_info *info, t_bool cap, va_list *args)
 {
-	unsigned int	to_put;
-	int				res;
-	unsigned int	print_len;
-	unsigned int	i;
+	unsigned long long	to_put;
+	int					res;
+	unsigned int		print_len;
+	unsigned int		i;
 
 	res = 0;
-	to_put = (unsigned int)va_arg(*args, unsigned int);
+	to_put = sz_hex(info, args);
 	print_len = f_hex_get_print_len(info, to_put);
 	if (info->left_align)
 		f_hex_print(info, to_put, cap, print_len, &res);
