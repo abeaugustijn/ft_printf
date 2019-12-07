@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 11:13:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 11:17:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 11:55:08 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	ft_puthex_fd_count(unsigned long long n, int fd, t_bool cap, int *count)
 	char *base;
 
 	base = cap ? "0123456789ABCDEF" : "0123456789abcdef";
-	if (n < 10)
+	if (n < 16)
 		ft_putchar_fd_count((base[n]), fd, count);
 	else
 	{
-		ft_putunsigned_fd_count(n / 16, fd, count);
-		ft_putchar_fd_count((base[(n % 16)]), fd, count);
+		ft_puthex_fd_count(n / 16, fd, cap, count);
+		ft_putchar_fd_count((base[n % 16]), fd, count);
 	}
 }

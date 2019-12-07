@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 11:12:50 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 11:57:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 	else if (info->has_space)
 		ft_putchar_fd_count(' ', FD, res);
 	if (info->hex_identifier)
-		ft_putstr_fd(cap ? "0X" : "0x", FD);
+		ft_putstr_fd_count(cap ? "0X" : "0x", FD, res);
 	n_zero = print_len - (is_neg || info->force_sign || info->has_space)
 		- ft_hexlen(to_put) - ((info->hex_identifier && (to_put ||
 		info->type == POINTER)) ? 2 : 0);
