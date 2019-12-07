@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 17:05:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 11:12:50 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 		}
 	}
 	if (!(info->type == POINTER && info->has_precision && !info->precision))
-	ft_puthex_fd(to_put, FD, cap);
+	ft_puthex_fd_count(to_put, FD, cap, res);
 }
 
 /*
@@ -122,10 +122,9 @@ int				f_hex(t_format_info *info, t_bool cap, va_list *args)
 		i = 0;
 		while (i < info->width - print_len)
 		{
-			ft_putchar_fd(' ', FD);
+			ft_putchar_fd_count(' ', FD, &res);
 			i++;
 		}
-		res += i;
 	}
 	if (!info->left_align)
 		f_hex_print(info, to_put, cap, print_len, &res);

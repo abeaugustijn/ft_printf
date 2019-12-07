@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/06 15:52:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 11:03:58 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 			i++;
 		}
 	}
-	ft_putunsigned_fd(to_put, FD);
+	ft_putunsigned_fd_count(to_put, FD, res);
 }
 
 unsigned int	f_unsigned_get_print_len(t_format_info *info,
@@ -83,10 +83,9 @@ int		f_unsigned(t_format_info *info, va_list *args)
 		i = 0;
 		while (i < info->width - print_len)
 		{
-			ft_putchar_fd(' ', FD);
+			ft_putchar_fd_count(' ', FD, &res);
 			i++;
 		}
-		res += i;
 	}
 	if (!info->left_align)
 		f_unsigned_print(info, to_put, print_len, &res);
