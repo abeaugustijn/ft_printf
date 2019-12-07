@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_pointer.c                                        :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 14:44:48 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 12:19:20 by aaugusti         ###   ########.fr       */
+/*   Created: 2019/12/07 12:10:14 by aaugusti          #+#    #+#             */
+/*   Updated: 2019/12/07 12:11:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <formats.h>
-#include <libft.h>
+#ifndef PARSING_H
+# define PARSING_H
+# include <t_format_info.h>
 
-int		f_pointer(t_format_info *info, va_list *args)
-{
-	info->hex_identifier = TRUE;
-	info->has_size = TRUE;
-	info->size = LL;
-	return (f_hex(info, args));
-}
+void	flags(t_format_info *info, char **format);
+void	width(t_format_info *info, char **format);
+void	precision(t_format_info *info, char **format);
+int		specifier(t_format_info *info, char **format);
+void	size(t_format_info *info, char **format);
+
+#endif

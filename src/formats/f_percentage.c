@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
-/*   Updated: 2019/12/06 14:55:42 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 12:04:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		f_percentage(t_format_info *info)
 	unsigned int	i;
 
 	if (info->left_align)
-			ft_putchar_fd('%', FD);
+		ft_putchar_fd('%', FD);
 	i = 0;
 	if (info->has_width && info->width > 0)
 	{
@@ -33,6 +33,6 @@ int		f_percentage(t_format_info *info)
 		}
 	}
 	if (!info->left_align)
-			ft_putchar_fd('%', FD);
+		ft_putchar_fd('%', FD);
 	return (i + 1);
 }

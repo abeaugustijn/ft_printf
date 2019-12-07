@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:49:53 by abe               #+#    #+#             */
-/*   Updated: 2019/12/06 15:30:07 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 12:08:17 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	Generate a new object which contains information about a format string
 */
 
-t_format_info	*t_fi_create()
+t_format_info	*t_fi_create(void)
 {
 	t_format_info	*res;
 

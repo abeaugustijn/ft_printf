@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 11:00:18 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 12:07:35 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,10 @@ void			f_int_print(t_format_info *info, long long to_put,
 	unsigned int	is_neg;
 	int				n_zero;
 	int				i;
-	unsigned int	use_width;
 
 	is_neg = to_put < 0;
 	if (is_neg)
 		to_put *= -1;
-	use_width = info->has_width && info->width > info->precision;
 	if (is_neg || info->force_sign)
 		ft_putchar_fd_count(is_neg ? '-' : '+', FD, res);
 	else if (info->has_space)
@@ -50,7 +48,7 @@ void			f_int_print(t_format_info *info, long long to_put,
 			i++;
 		}
 	}
-	if(!(info->has_precision && !info->precision))
+	if (!(info->has_precision && !info->precision))
 		ft_putnbr_ll_fd_count(to_put, FD, res);
 }
 

@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/12/07 11:16:03 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/12/07 12:29:05 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS			=\
 	t_format_info/t_fi_get_info\
 	t_format_info/t_fi_handle_plus_space\
 	t_format_info/t_fi_handle_zero_minus\
+	t_format_info/t_fi_parse_functions\
 	formats/f_char\
 	formats/f_int\
 	formats/f_string\
@@ -35,7 +36,7 @@ SRCS			=\
 	sizes/sz_int\
 	sizes/sz_hex
 
-BONUS_SRCS		=	
+BONUS_SRCS		=
 
 TESTS_SRCS		=\
 	string
@@ -81,7 +82,7 @@ fclean: _clean
 _clean:
 	@rm -f $(OFILES) $(BONUS_OFILES)
 
-re: fclean all 
+re: fclean all
 
 bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
 	@echo "Linking bonus lib"

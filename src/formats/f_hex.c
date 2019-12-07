@@ -6,10 +6,9 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 11:57:40 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 12:30:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <ft_printf.h>
 #include <stdarg.h>
@@ -26,17 +25,14 @@
 */
 
 void			f_hex_print(t_format_info *info, unsigned long long to_put,
-		t_bool cap, unsigned int print_len, int *res)
+		unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
 	int				n_zero;
-	int				i;
-	unsigned int	use_width;
 
 	is_neg = to_put < 0;
 	if (is_neg)
 		to_put *= -1;
-	use_width = info->has_width && (info->width > info->precision);
 	if (info->has_precision && !info->precision && info->type != POINTER)
 		return ;
 	if (is_neg || info->force_sign)
@@ -44,21 +40,17 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 	else if (info->has_space)
 		ft_putchar_fd_count(' ', FD, res);
 	if (info->hex_identifier)
-		ft_putstr_fd_count(cap ? "0X" : "0x", FD, res);
+		ft_putstr_fd_count(info->type == HEX_UP ? "0X" : "0x", FD, res);
 	n_zero = print_len - (is_neg || info->force_sign || info->has_space)
 		- ft_hexlen(to_put) - ((info->hex_identifier && (to_put ||
 		info->type == POINTER)) ? 2 : 0);
-	if (n_zero > 0)
+	while (n_zero > 0)
 	{
-		i = 0;
-		while (i < n_zero)
-		{
-			ft_putchar_fd_count('0', FD, res);
-			i++;
-		}
+		ft_putchar_fd_count('0', FD, res);
+		n_zero--;
 	}
 	if (!(info->type == POINTER && info->has_precision && !info->precision))
-	ft_puthex_fd_count(to_put, FD, cap, res);
+		ft_puthex_fd_count(to_put, FD, info->type == HEX_UP, res);
 }
 
 /*
@@ -103,7 +95,7 @@ unsigned int	f_hex_get_print_len(t_format_info *info,
 **	Also implements support for pointers.
 */
 
-int				f_hex(t_format_info *info, t_bool cap, va_list *args)
+int				f_hex(t_format_info *info, va_list *args)
 {
 	unsigned long long	to_put;
 	int					res;
@@ -116,7 +108,7 @@ int				f_hex(t_format_info *info, t_bool cap, va_list *args)
 		info->hex_identifier = FALSE;
 	print_len = f_hex_get_print_len(info, to_put);
 	if (info->left_align)
-		f_hex_print(info, to_put, cap, print_len, &res);
+		f_hex_print(info, to_put, print_len, &res);
 	if (info->width > print_len)
 	{
 		i = 0;
@@ -127,7 +119,6 @@ int				f_hex(t_format_info *info, t_bool cap, va_list *args)
 		}
 	}
 	if (!info->left_align)
-		f_hex_print(info, to_put, cap, print_len, &res);
+		f_hex_print(info, to_put, print_len, &res);
 	return (res);
 }
-

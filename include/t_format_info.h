@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/12/06 15:29:32 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 12:27:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ typedef struct		s_format_info
 	t_bool			hex_identifier;
 }					t_format_info;
 
-t_format_info	*t_fi_create();
-int				t_fi_get_info(t_format_info	*info, char **format);
-void			t_fi_check_width_precision(t_format_info *info, va_list *args);
-void			t_fi_handle_plus_space(t_format_info *info);
-void			t_fi_handle_zero_minus(t_format_info *info);
-int				output(t_format_info *info, va_list *args);
+t_format_info		*t_fi_create(void);
+int					t_fi_get_info(t_format_info	*info, char **format);
+void				t_fi_check_width_precision(t_format_info *info,
+					va_list *args);
+void				t_fi_handle_plus_space(t_format_info *info);
+void				t_fi_handle_zero_minus(t_format_info *info);
+int					output(t_format_info *info, va_list *args);
 
 #endif

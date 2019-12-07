@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 11:03:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 12:14:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <utils.h>
 
 void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
-		unsigned int print_len, int *res)
+				unsigned int print_len, int *res)
 {
 	int				n_zero;
 	int				i;
@@ -46,7 +46,7 @@ void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 }
 
 unsigned int	f_unsigned_get_print_len(t_format_info *info,
-		unsigned long long to_put)
+				unsigned long long to_put)
 {
 	size_t			og_len;
 	unsigned int	res;
@@ -66,7 +66,7 @@ unsigned int	f_unsigned_get_print_len(t_format_info *info,
 	return (res);
 }
 
-int		f_unsigned(t_format_info *info, va_list *args)
+int				f_unsigned(t_format_info *info, va_list *args)
 {
 	unsigned long long	to_put;
 	int					res;
