@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/11/19 16:05:39 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 14:04:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 	if (str == NULL)
 		return (0);
 	og_str_len = ft_strlen(str);
-	if (info->has_precision && og_str_len > info->precision)
+	if (info->has_precision && og_str_len > (size_t)info->precision)
 		return (info->precision);
 	return (og_str_len);
 }

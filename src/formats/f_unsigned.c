@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 12:14:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 14:05:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 	int				i;
 	unsigned int	use_width;
 
-	use_width = info->has_width && (info->width > info->precision);
+	use_width = info->has_width && ((int)info->width > info->precision);
 	if (info->has_precision && !info->precision)
 		return ;
 	if (info->force_sign)
@@ -55,7 +55,7 @@ unsigned int	f_unsigned_get_print_len(t_format_info *info,
 	res = og_len;
 	if (info->has_precision && !info->precision)
 		return (0);
-	if (info->has_precision && (info->precision > og_len))
+	if (info->has_precision && ((size_t)info->precision > og_len))
 		res = info->precision;
 	if (info->force_sign || info->has_space)
 		res++;

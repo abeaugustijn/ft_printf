@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 12:27:43 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 14:03:36 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_format_info
 	t_size			size;
 	unsigned int	width;
 	t_bool			has_width;
-	unsigned int	precision;
+	int				precision;
 	t_bool			has_precision;
 	t_bool			has_size;
 	t_bool			has_space;

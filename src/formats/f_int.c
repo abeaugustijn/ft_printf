@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 12:07:35 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 14:03:59 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 		to_put *= -1;
 	og_intlen = ft_intlen(to_put);
 	res = og_intlen;
-	if (info->has_precision && info->precision > og_intlen)
+	if (info->has_precision && (size_t) info->precision > og_intlen)
 		res = info->precision;
 	if (info->has_precision && !info->precision && !to_put)
 		res = 0;
