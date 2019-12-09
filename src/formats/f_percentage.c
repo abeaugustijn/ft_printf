@@ -6,10 +6,11 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
-/*   Updated: 2019/12/09 12:12:01 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:18:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <formats.h>
 #include <t_format_info.h>
 

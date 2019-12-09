@@ -6,10 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:31:56 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:13:21 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:18:26 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <formats.h>
 #include <t_format_info.h>
 #include <stdarg.h>
