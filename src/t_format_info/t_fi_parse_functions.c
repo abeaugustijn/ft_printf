@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 12:09:37 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 17:04:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 10:11:59 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	flags(t_format_info *info, char **format)
 			info->hex_identifier = TRUE;
 		else if (**format == ' ')
 			info->has_space = TRUE;
+		else if (**format == ''')
+			info->thousands = TRUE;
 		else
 			return ;
 		(*format)++;
