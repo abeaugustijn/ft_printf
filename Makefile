@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/12/09 12:00:18 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/12/09 15:29:46 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,81 +36,49 @@ SRCS			=\
 	sizes/sz_int\
 	sizes/sz_hex
 
-BONUS_SRCS		=
-
-TESTS_SRCS		=\
-	string
+LIBFT_SRCS		=\
+	atoi\
+	atoi_ul\
+	hexlen\
+	intlen\
+	isdigit\
+	putchar_fd\
+	strlen\
+	unsignedlen
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
-BONUS_CFILES	=	$(BONUS_SRCS:%=src/%_bonus.c)
-BONUS_OFILES	=	$(BONUS_SRCS:%=src/%_bonus.o)
-
-TESTS_CFILES	=	$(TESTS_SRCS:%=tests/%.c)
-TESTS_OFILES	=	$(TESTS_SRCS:%=tests/%.o)
+LIBFT_CFILES	=	$(LIBFT_SRCS:%=libft/ft_%.c)
+LIBFT_OFILES	=	$(LIBFT_SRCS:%=libft/ft_%.o)
 
 INCLUDES		=	include -I libft
 
 FLAGS			=	-Wall -Werror -Wextra
-#FLAGS			=
 
 AR_COMMAND		=	ar rs
 
-LIBFT_DIR		=	./libft
-
 all: $(NAME)
 
-$(NAME): $(OFILES)
+$(NAME): $(OFILES) $(LIBFT_OFILES)
 	@echo "Linking lib"
-	@$(AR_COMMAND) $(NAME) $(OFILES) libft/*.o
+	@$(AR_COMMAND) $(NAME) $(OFILES)
 	@echo "Done"
 
-%.o: %.c libft/libft.a
+%.o: %.c
 	@echo "Compiling: $<"
 	@clang -g -o $@ -c $< $(FLAGS) -I $(INCLUDES)
 
 clean: _clean
 	@echo "Cleaning..."
-	@make clean -C libft
 
 fclean: _clean
-	@echo "Fucking cleaning..."
-	@make fclean -C libft
+	@echo "Cleaning..."
 	@rm -f $(NAME)
 
 _clean:
-	@rm -f $(OFILES) $(BONUS_OFILES)
+	@rm -f $(OFILES) $(LIBFT_OFILES)
 
 re: fclean all
 
-bonus: $(OFILES) $(BONUS_OFILES) $(NAME)
-	@echo "Linking bonus lib"
-	@$(AR_COMMAND) $(NAME) $(OFILES) $(BONUS_OFILES)
-	@echo "Bonus done"
-
-libft/libft.a:
-	make -C libft
-	make bonus -C libft
-
-main: main.c
-	@clang -g -o main\
-		-Wall -Werror -Wextra\
-		-I $(INCLUDES)\
-		$(FLAGS)\
-		$(CFILES)\
-		libft/*.c\
-		main.c
-
-test:
-	@clang -o run_tests\
-		-I $(INCLUDES)\
-		$(TESTS_CFILES)\
-		$(FLAGS)\
-		$(CFILES)\
-		libft/*.c\
-		-I/Users/aaugusti/.brew/include\
-		-L/Users/aaugusti/.brew/lib\
-		-lcriterion\
-		-Wformat=0
-	./run_tests
+bonus: $(NAME)
