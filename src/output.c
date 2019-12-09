@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 12:17:46 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 17:07:44 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <formats.h>
 #include <stdarg.h>
 
-int		output(t_format_info *info, va_list *args)
+int		output(t_format_info *info, va_list *args, int n)
 {
 	if (info->type == STRING)
 		return (f_string(info, args));
@@ -31,5 +31,7 @@ int		output(t_format_info *info, va_list *args)
 		return (f_pointer(info, args));
 	else if (info->type == UNSIGNED)
 		return (f_unsigned(info, args));
+	else if (info->type == N)
+		return (f_n(args, n));
 	return (0);
 }

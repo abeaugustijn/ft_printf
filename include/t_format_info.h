@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 14:03:36 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 17:07:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void				t_fi_check_width_precision(t_format_info *info,
 					va_list *args);
 void				t_fi_handle_plus_space(t_format_info *info);
 void				t_fi_handle_zero_minus(t_format_info *info);
-int					output(t_format_info *info, va_list *args);
+int					output(t_format_info *info, va_list *args, int n);
 
 #endif

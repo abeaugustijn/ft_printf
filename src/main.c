@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:49:25 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 12:06:07 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 17:06:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			tmp_res = handle_format((char **)&format, args);
+			tmp_res = handle_format((char **)&format, args, res);
 			if (tmp_res == -1)
 				return (-1);
 			res += tmp_res;

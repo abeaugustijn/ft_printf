@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_var_type.h                                       :+:      :+:    :+:   */
+/*   f_n.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 13:58:59 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 17:03:45 by aaugusti         ###   ########.fr       */
+/*   Created: 2019/12/07 17:05:14 by aaugusti          #+#    #+#             */
+/*   Updated: 2019/12/07 17:08:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_VAR_TYPE_H
-# define T_VAR_TYPE_H
+#include <ft_printf.h>
+#include <formats.h>
+#include <stdarg.h>
+#include <utils.h>
 
-typedef enum	e_var_type {
-	CHAR,
-	STRING,
-	POINTER,
-	INT,
-	UNSIGNED,
-	HEX_LOW,
-	HEX_UP,
-	PERCENTAGE,
-	N,
-	UNDEFINED
-}				t_var_type;
+/*
+**	The format function for a single character. Has to take width into account.
+*/
 
-#endif
+int		f_n(va_list *args, int n)
+{
+	int	*ptr;
+
+	ptr = (int *)va_arg(*args, int *);
+	*ptr = n;
+	return (0);
+}

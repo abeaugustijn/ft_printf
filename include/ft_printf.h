@@ -6,7 +6,7 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:02:10 by abe            #+#    #+#                */
-/*   Updated: 2019/11/18 14:00:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/07 17:07:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # endif
 
 int				ft_printf(const char *format, ...);
-int				handle_format(char **format, va_list *args);
+int				handle_format(char **format, va_list *args, int n);
 t_format_info	get_var_type(char *format);
 
 #endif
