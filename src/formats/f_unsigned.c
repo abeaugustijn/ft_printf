@@ -6,16 +6,19 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 14:05:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:04:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <t_format_info.h>
 #include <stdarg.h>
 #include <sizes.h>
 #include <libft.h>
 #include <utils.h>
+
+/*
+**	Print the unsigned int. This is only the non-whitespace part.
+*/
 
 void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 				unsigned int print_len, int *res)
@@ -45,6 +48,10 @@ void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 	ft_putunsigned_fd_count(to_put, FD, res);
 }
 
+/*
+**	Get the amount of non-whitespace bytes that will be printed.
+*/
+
 unsigned int	f_unsigned_get_print_len(t_format_info *info,
 				unsigned long long to_put)
 {
@@ -65,6 +72,10 @@ unsigned int	f_unsigned_get_print_len(t_format_info *info,
 		res = info->width > og_len ? info->width : og_len;
 	return (res);
 }
+
+/*
+**	The format function for formats of the type unsigned integer.
+*/
 
 int				f_unsigned(t_format_info *info, va_list *args)
 {

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:34:29 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 17:06:49 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 11:58:55 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 
 /*
 **	Handles a single format 'snippet'
-**
-**	format:	pointer to the string that points to the first character of the
-**			'snippet'
 */
 
 int		handle_format(char **format, va_list *args, int n)

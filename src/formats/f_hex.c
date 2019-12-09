@@ -6,16 +6,15 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 14:04:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:13:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include <formats.h>
 #include <stdarg.h>
 #include <t_format_info.h>
 #include <libft.h>
 #include <utils.h>
-#include <stdlib.h>
 #include <sizes.h>
 
 /*

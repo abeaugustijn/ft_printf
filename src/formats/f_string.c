@@ -6,11 +6,10 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 14:04:10 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:11:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <formats.h>
 #include <libft.h>
 #include <utils.h>
@@ -55,12 +54,13 @@ unsigned int	f_string_print_padding(t_format_info *info,
 
 unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 {
-	unsigned int	og_str_len;
+	size_t	og_str_len;
 
 	if (str == NULL)
 		return (0);
 	og_str_len = ft_strlen(str);
-	if (info->has_precision && og_str_len > (size_t)info->precision)
+	if (info->has_precision && info->precision > 0 &&
+			og_str_len > (size_t)info->precision)
 		return (info->precision);
 	return (og_str_len);
 }

@@ -6,14 +6,14 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 17:07:44 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:14:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-#include <libft.h>
 #include <formats.h>
 #include <stdarg.h>
+#include <t_format_info.h>
 
 int		output(t_format_info *info, va_list *args, int n)
 {

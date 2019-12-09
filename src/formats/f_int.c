@@ -6,11 +6,11 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 14:03:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:12:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include <formats.h>
 #include <stdarg.h>
 #include <t_format_info.h>
 #include <libft.h>
@@ -19,8 +19,6 @@
 
 /*
 **	Print the integer. This is only the non-whitespace part of the int.
-**	- first check negative; the first char in the case of a negative int is
-**		always a minus
 */
 
 void			f_int_print(t_format_info *info, long long to_put,
@@ -54,12 +52,6 @@ void			f_int_print(t_format_info *info, long long to_put,
 
 /*
 **	Get the amount of non-whitespace bytes that will be printed.
-**	- in the case that width is set and there is a zero flag return the largest
-**		of og_intlen and width.
-**	- if precision is set and precision is larger than og_intlen return pre-
-**		cision.
-**		* also, if to_put is negative add a byte for the minus
-**	- precision overwrites width
 */
 
 unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)

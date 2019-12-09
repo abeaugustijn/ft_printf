@@ -6,17 +6,15 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:49:53 by abe               #+#    #+#             */
-/*   Updated: 2019/12/07 12:08:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:02:18 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <t_format_info.h>
-#include <libft.h>
 #include <stdlib.h>
 
 /*
-**	Generate a new object which contains information about a format string
+**	Generate a new object which contains information about a format string.
 */
 
 t_format_info	*t_fi_create(void)

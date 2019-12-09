@@ -6,14 +6,14 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:58:28 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 17:08:35 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/09 12:14:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORMATS_H
 # define FORMATS_H
-# include <ft_printf.h>
-# include <libft.h>
+# include <t_format_info.h>
+# include <stdarg.h>
 
 int		f_string(t_format_info *info, va_list *args);
 int		f_char(t_format_info *info, va_list *args);
