@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 09:43:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 14:47:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,17 @@ static void			f_unsigned_print(t_format_info *info,
 		unsigned long long to_put, unsigned int print_len, int *res)
 {
 	int				n_zero;
-	int				i;
 	unsigned int	use_width;
 
 	use_width = info->has_width && ((int)info->width > info->precision);
-	if (info->has_precision && !info->precision)
-		return ;
-	if (info->force_sign)
-		ft_putchar_fd_count('+', FD, res);
-	else if (info->has_space)
-		ft_putchar_fd_count(' ', FD, res);
-	n_zero = print_len - (info->force_sign || info->has_space)
-		- ft_unsignedlen(to_put);
-	if (n_zero > 0)
+	n_zero = print_len - ft_unsignedlen(to_put);
+	while (n_zero > 0)
 	{
-		i = 0;
-		while (i < n_zero)
-		{
-			ft_putchar_fd_count('0', FD, res);
-			i++;
-		}
+		ft_putchar_fd_count('0', FD, res);
+		n_zero--;
 	}
-	ft_putunsigned_fd_count(to_put, FD, res);
+	if (!(info->has_precision && !info->precision && !to_put))
+		ft_putunsigned_fd_count(to_put, FD, res);
 }
 
 /*
@@ -61,12 +50,10 @@ static unsigned int	f_unsigned_get_print_len(t_format_info *info,
 
 	og_len = ft_unsignedlen(to_put);
 	res = og_len;
-	if (info->has_precision && !info->precision)
+	if (info->has_precision && !info->precision && !to_put)
 		return (0);
 	if (info->has_precision && ((size_t)info->precision > og_len))
 		res = info->precision;
-	if (info->force_sign || info->has_space)
-		res++;
 	if (info->has_precision && info->has_width)
 		return (res);
 	if (info->zero_pad && info->has_width)
