@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/12/09 15:29:46 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/12/10 07:40:31 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ OFILES			=	$(SRCS:%=src/%.o)
 LIBFT_CFILES	=	$(LIBFT_SRCS:%=libft/ft_%.c)
 LIBFT_OFILES	=	$(LIBFT_SRCS:%=libft/ft_%.o)
 
-INCLUDES		=	include -I libft
+INCLUDES		=	-I include -I libft
 
 FLAGS			=	-Wall -Werror -Wextra
 
@@ -62,12 +62,12 @@ all: $(NAME)
 
 $(NAME): $(OFILES) $(LIBFT_OFILES)
 	@echo "Linking lib"
-	@$(AR_COMMAND) $(NAME) $(OFILES)
+	@$(AR_COMMAND) $(NAME) $(OFILES) $(LIBFT_OFILES)
 	@echo "Done"
 
 %.o: %.c
 	@echo "Compiling: $<"
-	@clang -g -o $@ -c $< $(FLAGS) -I $(INCLUDES)
+	@clang -o $@ -c $< $(FLAGS) $(INCLUDES)
 
 clean: _clean
 	@echo "Cleaning..."

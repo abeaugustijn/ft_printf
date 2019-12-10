@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 12:09:37 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:03:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:38:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	precision(t_format_info *info, char **format)
 		(*format)++;
 		return ;
 	}
-	precision = ft_atoi_ui(*format);
+	precision = ft_atoi_ul(*format);
 	info->precision = precision;
 	while (ft_isdigit(**format))
 		(*format)++;
