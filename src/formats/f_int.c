@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/10 09:43:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 13:39:39 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void			f_int_print(t_format_info *info, long long to_put,
 			i++;
 		}
 	}
-	if (!(info->has_precision && !info->precision))
+	if (!(info->has_precision && !info->precision && !to_put))
 		ft_putnbr_ll_fd_count(to_put, FD, res);
 }
 
