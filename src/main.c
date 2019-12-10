@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 18:49:25 by abe               #+#    #+#             */
-/*   Updated: 2019/12/10 08:52:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 09:06:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ int		ft_printf(const char *format, ...)
 	res = 0;
 	while (*format)
 	{
+		res += write_string((char **)&format);
 		if (*format == '%')
 			res += handle_format((char **)&format, &args, res);
-		else
-			ft_putchar_fd_count(*format, 1, &res);
-		format++;
 	}
 	va_end(args);
 	return (res);

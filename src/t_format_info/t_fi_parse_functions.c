@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 12:09:37 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 07:38:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 09:06:06 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int		specifier(t_format_info *info, char **format)
 		info->type = N;
 	else
 		return (1);
+	(*format)++;
 	return (0);
 }
 
