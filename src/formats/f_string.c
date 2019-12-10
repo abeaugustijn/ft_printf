@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:19:08 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:44:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	Output the string
 */
 
-void			f_string_putstr(t_format_info *info, char *str, int *res)
+static void			f_string_putstr(t_format_info *info, char *str, int *res)
 {
 	if (info->has_precision)
 		ft_putstr_n_fd_count(str, (size_t)info->precision, FD, res);
@@ -32,7 +32,7 @@ void			f_string_putstr(t_format_info *info, char *str, int *res)
 **	string.
 */
 
-unsigned int	f_string_print_padding(t_format_info *info,
+static unsigned int	f_string_print_padding(t_format_info *info,
 		unsigned int str_len, int *res)
 {
 	unsigned int	i;
@@ -53,7 +53,7 @@ unsigned int	f_string_print_padding(t_format_info *info,
 **	Get the strings length and take precision into account.
 */
 
-unsigned int	f_string_get_strlen(t_format_info *info, char *str)
+static unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 {
 	size_t	og_str_len;
 
@@ -70,7 +70,7 @@ unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 **	Function to output a string with different format rules.
 */
 
-int				f_string(t_format_info *info, va_list *args)
+int					f_string(t_format_info *info, va_list *args)
 {
 	char			*str;
 	unsigned int	str_len;

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/09 12:18:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:43:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 **	Print the integer. This is only the non-whitespace part of the int.
 */
 
-void			f_int_print(t_format_info *info, long long to_put,
+static void			f_int_print(t_format_info *info, long long to_put,
 		unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
@@ -54,8 +54,8 @@ void			f_int_print(t_format_info *info, long long to_put,
 /*
 **	Get the amount of non-whitespace bytes that will be printed.
 */
-
-unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
+			
+static unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 {
 	size_t			og_intlen;
 	unsigned int	is_neg;
@@ -83,7 +83,7 @@ unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 **	The format function for formats of the type integer.
 */
 
-int				f_int(t_format_info *info, va_list *args)
+int					f_int(t_format_info *info, va_list *args)
 {
 	long long int	to_put;
 	int				res;

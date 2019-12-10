@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:18:42 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:42:41 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **		always a minus
 */
 
-void			f_hex_print(t_format_info *info, unsigned long long to_put,
+static void			f_hex_print(t_format_info *info, unsigned long long to_put,
 		unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
@@ -63,7 +63,7 @@ void			f_hex_print(t_format_info *info, unsigned long long to_put,
 **	- precision overwrites width
 */
 
-unsigned int	f_hex_get_print_len(t_format_info *info,
+static unsigned int	f_hex_get_print_len(t_format_info *info,
 		unsigned long long to_put)
 {
 	size_t			og_hexlen;
@@ -95,7 +95,7 @@ unsigned int	f_hex_get_print_len(t_format_info *info,
 **	Also implements support for pointers.
 */
 
-int				f_hex(t_format_info *info, va_list *args)
+int					f_hex(t_format_info *info, va_list *args)
 {
 	unsigned long long	to_put;
 	int					res;

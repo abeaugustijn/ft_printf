@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:19:10 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:45:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 **	Print the unsigned int. This is only the non-whitespace part.
 */
 
-void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
+static void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 				unsigned int print_len, int *res)
 {
 	int				n_zero;
@@ -53,7 +53,7 @@ void			f_unsigned_print(t_format_info *info, unsigned long long to_put,
 **	Get the amount of non-whitespace bytes that will be printed.
 */
 
-unsigned int	f_unsigned_get_print_len(t_format_info *info,
+static unsigned int	f_unsigned_get_print_len(t_format_info *info,
 				unsigned long long to_put)
 {
 	size_t			og_len;
