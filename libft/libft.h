@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:23:24 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 07:37:51 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:52:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef char	t_bool;
 #  define FALSE 0
 # endif
 
+void			*ft_memset(void *b, int c, size_t len);
+void			ft_bzero(void *s, size_t n);
 int				ft_atoi(const char *str);
 unsigned long	ft_atoi_ul(const char *str);
 size_t			ft_hexlen(unsigned long long n);

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 13:58:59 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/07 17:03:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:56:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define T_VAR_TYPE_H
 
 typedef enum	e_var_type {
+	UNDEFINED,
 	CHAR,
 	STRING,
 	POINTER,
@@ -22,8 +23,7 @@ typedef enum	e_var_type {
 	HEX_LOW,
 	HEX_UP,
 	PERCENTAGE,
-	N,
-	UNDEFINED
+	N
 }				t_var_type;
 
 #endif

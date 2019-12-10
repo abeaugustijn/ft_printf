@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:34:29 by abe               #+#    #+#             */
-/*   Updated: 2019/12/09 11:58:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 07:56:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,10 @@
 
 int		handle_format(char **format, va_list *args, int n)
 {
-	t_format_info	*info;
-	int				res;
+	t_format_info	info;
 
-	info = t_fi_create();
-	if (info == NULL)
-		return (-1);
-	if (t_fi_get_info(info, format))
-		return (-1);
-	t_fi_check_width_precision(info, args);
-	res = output(info, args, n);
-	free(info);
-	return (res);
+	ft_bzero(&info, sizeof(t_format_info));
+	t_fi_get_info(&info, format);
+	t_fi_check_width_precision(&info, args);
+	return (output(&info, args, n));
 }

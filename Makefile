@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2019/12/10 07:40:31 by aaugusti         ###   ########.fr        #
+#    Updated: 2019/12/10 07:57:58 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRCS			=\
 	handle_format\
 	main output\
 	t_format_info/t_fi_check_width_precision\
-	t_format_info/t_fi_create\
 	t_format_info/t_fi_get_info\
 	t_format_info/t_fi_handle_zero_minus\
 	t_format_info/t_fi_parse_functions\
@@ -44,7 +43,9 @@ LIBFT_SRCS		=\
 	isdigit\
 	putchar_fd\
 	strlen\
-	unsignedlen
+	unsignedlen\
+	bzero\
+	memset
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
