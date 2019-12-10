@@ -6,15 +6,15 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/12/10 07:50:06 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 09:50:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_FORMAT_INFO_H
 # define T_FORMAT_INFO_H
-# include <libft.h>
-# include <t_var_type.h>
-# include <t_size.h>
+# include "../libft/libft.h"
+# include "t_var_type.h"
+# include "t_size.h"
 # include <stdarg.h>
 
 typedef struct		s_format_info
