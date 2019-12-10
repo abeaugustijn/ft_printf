@@ -6,13 +6,12 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:34:29 by abe               #+#    #+#             */
-/*   Updated: 2019/12/10 07:56:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 08:52:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 #include <t_format_info.h>
-#include <stdlib.h>
 #include <stdarg.h>
 
 /*
