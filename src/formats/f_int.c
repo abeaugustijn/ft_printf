@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 20:02:44 by abe               #+#    #+#             */
-/*   Updated: 2019/12/10 07:43:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 09:43:58 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void			f_int_print(t_format_info *info, long long to_put,
 /*
 **	Get the amount of non-whitespace bytes that will be printed.
 */
-			
+
 static unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 {
 	size_t			og_intlen;
@@ -66,7 +66,7 @@ static unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 		to_put *= -1;
 	og_intlen = ft_intlen(to_put);
 	res = og_intlen;
-	if (info->has_precision && (size_t) info->precision > og_intlen)
+	if (info->has_precision && (size_t)info->precision > og_intlen)
 		res = info->precision;
 	if (info->has_precision && !info->precision && !to_put)
 		res = 0;

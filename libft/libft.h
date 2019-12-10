@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:23:24 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 07:52:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 09:42:46 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 # include <stddef.h>
 
 # ifndef t_bool
+
 typedef char	t_bool;
+
 # endif
 
 # ifndef TRUE
