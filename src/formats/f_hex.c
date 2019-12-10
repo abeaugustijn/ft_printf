@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 07:42:41 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:50:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,22 @@
 static void			f_hex_print(t_format_info *info, unsigned long long to_put,
 		unsigned int print_len, int *res)
 {
-	unsigned int	is_neg;
 	int				n_zero;
 
-	is_neg = to_put < 0;
-	if (is_neg)
-		to_put *= -1;
-	if (info->has_precision && !info->precision && info->type != POINTER)
+	if (info->has_precision && !info->precision && !to_put &&
+			info->type != POINTER)
 		return ;
-	if (is_neg || info->force_sign)
-		ft_putchar_fd_count(is_neg ? '-' : '+', FD, res);
-	else if (info->has_space)
-		ft_putchar_fd_count(' ', FD, res);
 	if (info->hex_identifier)
 		ft_putstr_fd_count(info->type == HEX_UP ? "0X" : "0x", FD, res);
-	n_zero = print_len - (is_neg || info->force_sign || info->has_space)
-		- ft_hexlen(to_put) - ((info->hex_identifier && (to_put ||
-		info->type == POINTER)) ? 2 : 0);
+	n_zero = print_len - ft_hexlen(to_put) - ((info->hex_identifier &&
+		(to_put || info->type == POINTER)) ? 2 : 0);
 	while (n_zero > 0)
 	{
 		ft_putchar_fd_count('0', FD, res);
 		n_zero--;
 	}
-	if (!(info->type == POINTER && info->has_precision && !info->precision))
+	if (!(info->has_precision && !info->precision && !to_put &&
+			info->type == POINTER))
 		ft_puthex_fd_count(to_put, FD, info->type == HEX_UP, res);
 }
 
@@ -67,22 +60,17 @@ static unsigned int	f_hex_get_print_len(t_format_info *info,
 		unsigned long long to_put)
 {
 	size_t			og_hexlen;
-	unsigned int	is_neg;
 	unsigned int	res;
 
-	is_neg = to_put < 0;
-	if (is_neg)
-		to_put *= -1;
 	og_hexlen = ft_hexlen(to_put);
 	res = og_hexlen;
-	if (info->has_precision && !info->precision && info->type != POINTER)
+	if (info->has_precision && !info->precision && !to_put &&
+			info->type != POINTER)
 		return (0);
 	if (info->has_precision && ((size_t)info->precision > og_hexlen))
 		res = info->precision;
 	if (info->hex_identifier)
 		res += 2;
-	if (is_neg || info->force_sign || info->has_space)
-		res++;
 	if (info->has_precision && info->has_width)
 		return (res);
 	if (info->zero_pad && info->has_width)
