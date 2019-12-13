@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:54:12 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:03:14 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/13 19:22:20 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ long long int	sz_hex(t_format_info *info, va_list *args)
 			return ((unsigned char)va_arg(*args, int));
 		if (info->size == H)
 			return ((unsigned short int)va_arg(*args, int));
-		if (info->size == LL)
-			return ((unsigned long int)va_arg(*args, unsigned long int));
 		if (info->size == L)
+			return ((unsigned long int)va_arg(*args, unsigned long int));
+		if (info->size == LL)
 			return ((unsigned long long int)va_arg(*args,
 						unsigned long long int));
 	}

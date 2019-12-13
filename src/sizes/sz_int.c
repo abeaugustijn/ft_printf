@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 09:33:03 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:03:22 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/13 19:22:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ long long int	sz_int(t_format_info *info, va_list *args)
 			return ((signed char)va_arg(*args, int));
 		if (info->size == H)
 			return ((short int)va_arg(*args, int));
-		if (info->size == LL)
-			return ((long int)va_arg(*args, long int));
 		if (info->size == L)
+			return ((long int)va_arg(*args, long int));
+		if (info->size == LL)
 			return ((long long int)va_arg(*args, long long int));
 	}
 	return ((int)va_arg(*args, int));
