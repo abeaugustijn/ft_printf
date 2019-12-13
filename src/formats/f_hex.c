@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 16:50:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2019/12/13 13:45:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ static unsigned int	f_hex_get_print_len(t_format_info *info,
 
 	og_hexlen = ft_hexlen(to_put);
 	res = og_hexlen;
-	if (info->has_precision && !info->precision && !to_put &&
-			info->type != POINTER)
-		return (0);
+	if (info->has_precision && !info->precision && !to_put)
+		res = 0;
 	if (info->has_precision && ((size_t)info->precision > og_hexlen))
 		res = info->precision;
 	if (info->hex_identifier)
