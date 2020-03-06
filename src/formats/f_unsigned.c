@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 14:47:07 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:37:45 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static void			f_unsigned_print(t_format_info *info,
 		unsigned long long to_put, unsigned int print_len, int *res)
 {
 	int				n_zero;
-	unsigned int	use_width;
 
-	use_width = info->has_width && ((int)info->width > info->precision);
 	n_zero = print_len - ft_unsignedlen(to_put);
 	while (n_zero > 0)
 	{
