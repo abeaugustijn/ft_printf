@@ -6,7 +6,7 @@
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2020/04/28 14:03:26 by aaugusti      ########   odam.nl          #
+#    Updated: 2020/04/28 14:29:18 by aaugusti      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS			=	handle_format\
 					utils/ft_putnbr_ll_fd_count\
 					utils/ft_putunsigned_fd_count\
 					utils/ft_puthex_fd_count\
+					utils/ftp_write\
 					utils/write_string\
 					sizes/sz_int\
 					sizes/sz_hex\
@@ -42,9 +43,11 @@ LIBFT_SRCS		=	atoi\
 					hexlen\
 					intlen\
 					isdigit\
+					strchr\
 					strlen\
 					unsignedlen\
 					bzero\
+					memcpy\
 					memset\
 
 CFILES			=	$(SRCS:%=src/%.c)
@@ -57,14 +60,20 @@ INCLUDES		=	-I include -I libft
 
 FLAGS			=	-Wall -Werror -Wextra
 
-ifeq ($(SPRINTF),1)
+ifeq ($(SPRINTF), 1)
 FLAGS			+=	-DSPRINTF
 NAME			=	$(SNAME)
 else
 ifeq ($(shell ls sprintf 2>/dev/null), sprintf)
-EXTRA			+=	fclean
+EXTRA			+=	clean
 endif #ls sprintf
 endif #SPRINTF
+
+ifeq ($(DEBUG), 1)
+FLAGS			+=	-Og -g
+else
+FLAGS			+=	-Ofast
+endif
 
 AR_COMMAND		=	ar rs
 

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/09 15:23:24 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:52:36 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 14:12:39 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ size_t			ft_intlen(long long int n);
 size_t			ft_strlen(const char *s);
 size_t			ft_unsignedlen(unsigned long long int n);
 unsigned long	ft_atoi_ul(const char *str);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 

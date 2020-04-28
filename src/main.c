@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 18:49:25 by abe           #+#   #+#                  */
-/*   Updated: 2020/04/28 13:48:28 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 14:33:04 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int	ft_sprintf(char *str, const char *format, ...)
 	res = 0;
 	while (*format)
 	{
-		res += write_string((char **)&format);
+		res += write_string(&str, (char **)&format);
 		if (*format == '%')
 			res += handle_format(&str, (char **)&format, &args, res);
 	}
 	va_end(args);
+	*str = '\0';
 	return (res);
 }
 
@@ -48,7 +49,7 @@ int	ft_printf(const char *format, ...)
 	res = 0;
 	while (*format)
 	{
-		res += write_string((char **)&format);
+		res += write_string(NULL, (char **)&format);
 		if (*format == '%')
 			res += handle_format(NULL, (char **)&format, &args, res);
 	}

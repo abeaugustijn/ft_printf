@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 14:13:27 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:40:10 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 14:21:43 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <libft.h>
 # include <stdbool.h>
 
-int		write_string(char **format);
+int		write_string(char **tgt, char **format);
 void	ft_putchar_fd_count(char **tgt, char c, int *count);
 void	ft_puthex_fd_count(char **tgt, unsigned long long n, bool cap, int *count);
 void	ft_putnbr_ll_fd_count(char **tgt, long long int n, int *count);
