@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 20:02:44 by abe           #+#   #+#                  */
-/*   Updated: 2020/04/28 12:11:17 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:51:17 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void			f_int_print(t_format_info *info, long long to_put,
 	if (is_neg)
 		to_put *= -1;
 	if (is_neg || info->force_sign)
-		ft_putchar_fd_count(is_neg ? '-' : '+', FD, res);
+		ft_putchar_fd_count(info->tgt, is_neg ? '-' : '+', res);
 	else if (info->has_space)
-		ft_putchar_fd_count(' ', FD, res);
+		ft_putchar_fd_count(info->tgt, ' ', res);
 	n_zero = print_len - ((is_neg || info->force_sign || info->has_space)
 		? 1 : 0) - ft_intlen(to_put);
 	if (n_zero > 0)
@@ -43,12 +43,12 @@ static void			f_int_print(t_format_info *info, long long to_put,
 		i = 0;
 		while (i < n_zero)
 		{
-			ft_putchar_fd_count('0', FD, res);
+			ft_putchar_fd_count(info->tgt, '0', res);
 			i++;
 		}
 	}
 	if (!(info->has_precision && !info->precision && !to_put))
-		ft_putnbr_ll_fd_count(to_put, FD, res);
+		ft_putnbr_ll_fd_count(info->tgt, to_put, res);
 }
 
 /*
@@ -101,7 +101,7 @@ int					f_int(t_format_info *info, va_list *args, int n)
 		i = 0;
 		while (i < info->width - print_len)
 		{
-			ft_putchar_fd_count(' ', FD, &res);
+			ft_putchar_fd_count(info->tgt, ' ', &res);
 			i++;
 		}
 	}

@@ -6,15 +6,17 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 14:12:18 by aaugusti      #+#   #+#                  */
-/*   Updated: 2019/12/09 11:55:35 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:35:28 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <utils.h>
+#include <t_format_info.h>
 #include <unistd.h>
+#include <utils.h>
 
-void	ft_putchar_fd_count(char c, int fd, int *count)
+void	ft_putchar_fd_count(char **tgt, char c, int *count)
 {
-	write(fd, &c, 1);
+	(void)tgt;
+	ftp_write(&c, tgt, 1, count);
 	(*count)++;
 }

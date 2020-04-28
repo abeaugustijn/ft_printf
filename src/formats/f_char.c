@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 15:31:56 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 12:10:44 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:49:48 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ int		f_char(t_format_info *info, va_list *args, int n)
 	res = 0;
 	c = (char)va_arg(*args, int);
 	if (info->left_align)
-		ft_putchar_fd_count(c, FD, &res);
+		ft_putchar_fd_count(info->tgt, c, &res);
 	if (info->has_width)
 	{
 		i = 0;
 		while (i < info->width - 1)
 		{
-			ft_putchar_fd_count(info->zero_pad ? '0' : ' ', 1, &res);
+			ft_putchar_fd_count(info->tgt, info->zero_pad ? '0' : ' ', &res);
 			i++;
 		}
 	}
 	if (!info->left_align)
-		ft_putchar_fd_count(c, FD, &res);
+		ft_putchar_fd_count(info->tgt, c, &res);
 	return (res);
 }

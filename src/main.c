@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 18:49:25 by abe           #+#   #+#                  */
-/*   Updated: 2019/12/10 09:06:12 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:48:28 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 **	%[flags][width][.precision][length]specifier
 */
 
-int		ft_printf(const char *format, ...)
+#ifdef SPRINTF
+
+int	ft_sprintf(char *str, const char *format, ...)
 {
 	va_list	args;
 	int		res;
@@ -29,8 +31,29 @@ int		ft_printf(const char *format, ...)
 	{
 		res += write_string((char **)&format);
 		if (*format == '%')
-			res += handle_format((char **)&format, &args, res);
+			res += handle_format(&str, (char **)&format, &args, res);
 	}
 	va_end(args);
 	return (res);
 }
+
+#else
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	args;
+	int		res;
+
+	va_start(args, format);
+	res = 0;
+	while (*format)
+	{
+		res += write_string((char **)&format);
+		if (*format == '%')
+			res += handle_format(NULL, (char **)&format, &args, res);
+	}
+	va_end(args);
+	return (res);
+}
+
+#endif

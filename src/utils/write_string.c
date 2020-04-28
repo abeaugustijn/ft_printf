@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 08:57:07 by aaugusti      #+#   #+#                  */
-/*   Updated: 2019/12/10 09:01:49 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:43:18 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 int	write_string(char **format)
 {
-	size_t	strlen;
+	size_t	len;
 
-	strlen = 0;
-	while ((*format)[strlen] && (*format)[strlen] != '%')
-		strlen++;
-	write(FD, *format, strlen);
-	(*format) += strlen;
-	return ((int)strlen);
+	len = 0;
+	while ((*format)[len] && (*format)[len] != '%')
+		len++;
+	write(FD, *format, len);
+	(*format) += len;
+	return ((int)len);
 }

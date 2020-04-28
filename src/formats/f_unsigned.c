@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 15:22:10 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 12:12:50 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:55:17 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static void			f_unsigned_print(t_format_info *info,
 	n_zero = print_len - ft_unsignedlen(to_put);
 	while (n_zero > 0)
 	{
-		ft_putchar_fd_count('0', FD, res);
+		ft_putchar_fd_count(info->tgt, '0', res);
 		n_zero--;
 	}
 	if (!(info->has_precision && !info->precision && !to_put))
-		ft_putunsigned_fd_count(to_put, FD, res);
+		ft_putunsigned_fd_count(info->tgt, to_put, res);
 }
 
 /*
@@ -81,7 +81,7 @@ int					f_unsigned(t_format_info *info, va_list *args, int n)
 		i = 0;
 		while (i < info->width - print_len)
 		{
-			ft_putchar_fd_count(' ', FD, &res);
+			ft_putchar_fd_count(info->tgt, ' ', &res);
 			i++;
 		}
 	}

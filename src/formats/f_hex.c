@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 11:46:14 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:13:08 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:50:33 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ static void			f_hex_print(t_format_info *info, unsigned long long to_put,
 			info->type != POINTER)
 		return ;
 	if (info->hex_identifier)
-		ft_putstr_fd_count(info->type == HEX_UP ? "0X" : "0x", FD, res);
+		ft_putstr_fd_count(info->tgt, info->type == HEX_UP ? "0X" : "0x", res);
 	n_zero = print_len - ft_hexlen(to_put) - ((info->hex_identifier &&
 		(to_put || info->type == POINTER)) ? 2 : 0);
 	while (n_zero > 0)
 	{
-		ft_putchar_fd_count('0', FD, res);
+		ft_putchar_fd_count(info->tgt, '0', res);
 		n_zero--;
 	}
 	if (!(info->has_precision && !info->precision && !to_put &&
 			info->type == POINTER))
-		ft_puthex_fd_count(to_put, FD, info->type == HEX_UP, res);
+		ft_puthex_fd_count(info->tgt, to_put, info->type == HEX_UP, res);
 }
 
 /*
@@ -102,7 +102,7 @@ int					f_hex(t_format_info *info, va_list *args, int n)
 		i = 0;
 		while (i < info->width - print_len)
 		{
-			ft_putchar_fd_count(' ', FD, &res);
+			ft_putchar_fd_count(info->tgt, ' ', &res);
 			i++;
 		}
 	}

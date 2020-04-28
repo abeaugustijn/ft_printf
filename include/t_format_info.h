@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 20:45:27 by abe           #+#   #+#                  */
-/*   Updated: 2020/04/28 13:12:11 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:44:54 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ typedef struct		s_format_info
 	bool			hex_identifier;
 	bool			left_align;
 	bool			zero_pad;
+	char			**tgt;
 	int				precision;
 	t_size			size;
 	t_var_type		type;
 	unsigned int	width;
 }					t_format_info;
 
-t_format_info		*t_fi_create(void);
 void				t_fi_get_info(t_format_info	*info, char **format);
 void				t_fi_check_width_precision(t_format_info *info,
 		va_list *args);

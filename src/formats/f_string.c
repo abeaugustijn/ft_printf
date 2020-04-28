@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 14:17:45 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 12:12:41 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:54:51 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 static void			f_string_putstr(t_format_info *info, char *str, int *res)
 {
 	if (info->has_precision)
-		ft_putstr_n_fd_count(str, (size_t)info->precision, FD, res);
+		ft_putstr_n_fd_count(info->tgt, str, (size_t)info->precision, res);
 	else
-		ft_putstr_fd_count(str, FD, res);
+		ft_putstr_fd_count(info->tgt, str, res);
 }
 
 /*
@@ -42,7 +42,7 @@ static unsigned int	f_string_print_padding(t_format_info *info,
 	{
 		while (i < info->width - str_len)
 		{
-			ft_putchar_fd_count(info->zero_pad ? '0' : ' ', 1, res);
+			ft_putchar_fd_count(info->tgt, info->zero_pad ? '0' : ' ', res);
 			i++;
 		}
 	}

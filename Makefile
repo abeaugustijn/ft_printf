@@ -1,16 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: abe <abe@student.codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/04 19:52:15 by abe            #+#    #+#                 #
-#    Updated: 2020/03/06 11:15:35 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/04/28 14:03:26 by aaugusti      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libftprintf.a
+SNAME			=	libftsprintf.a
 
 SRCS			=	handle_format\
 					main output\
@@ -41,7 +42,6 @@ LIBFT_SRCS		=	atoi\
 					hexlen\
 					intlen\
 					isdigit\
-					putchar_fd\
 					strlen\
 					unsignedlen\
 					bzero\
@@ -57,11 +57,20 @@ INCLUDES		=	-I include -I libft
 
 FLAGS			=	-Wall -Werror -Wextra
 
+ifeq ($(SPRINTF),1)
+FLAGS			+=	-DSPRINTF
+NAME			=	$(SNAME)
+else
+ifeq ($(shell ls sprintf 2>/dev/null), sprintf)
+EXTRA			+=	fclean
+endif #ls sprintf
+endif #SPRINTF
+
 AR_COMMAND		=	ar rs
 
 all: $(NAME)
 
-$(NAME): $(OFILES) $(LIBFT_OFILES)
+$(NAME): $(EXTRA) $(OFILES) $(LIBFT_OFILES)
 	$(AR_COMMAND) $(NAME) $(OFILES) $(LIBFT_OFILES)
 
 %.o: %.c
@@ -71,10 +80,16 @@ clean: _clean
 
 fclean: _clean
 	rm -f $(NAME)
+	rm -f $(SNAME)
 
 _clean:
 	rm -f $(OFILES) $(LIBFT_OFILES)
+	rm -f sprintf
 
 re: fclean all
 
 bonus: $(NAME)
+
+sprintf:
+	@SPRINTF=1 make re
+	@touch sprintf

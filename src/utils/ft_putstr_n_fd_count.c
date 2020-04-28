@@ -6,19 +6,19 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 14:22:33 by aaugusti      #+#   #+#                  */
-/*   Updated: 2019/12/09 12:00:36 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/04/28 13:41:39 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <utils.h>
 #include <unistd.h>
+#include <utils.h>
 
-void	ft_putstr_n_fd_count(char *str, size_t n, int fd, int *res)
+void	ft_putstr_n_fd_count(char **tgt, char *str, size_t n, int *count)
 {
-	size_t	strlen;
+	size_t	len;
 
-	strlen = ft_strlen(str);
-	strlen = strlen > n ? n : strlen;
-	write(fd, str, strlen);
-	*res += strlen;
+	len = ft_strlen(str);
+	if (len > n)
+		len = n;
+	ftp_write(str, tgt, len, count);
 }
