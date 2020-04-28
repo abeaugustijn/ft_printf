@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   f_hex.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 11:46:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/13 13:45:12 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   f_hex.c                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/12/06 11:46:14 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 13:13:08 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,18 @@ static unsigned int	f_hex_get_print_len(t_format_info *info,
 **	Also implements support for pointers.
 */
 
-int					f_hex(t_format_info *info, va_list *args)
+int					f_hex(t_format_info *info, va_list *args, int n)
 {
 	unsigned long long	to_put;
 	int					res;
 	unsigned int		print_len;
 	unsigned int		i;
 
+	(void)n;
 	res = 0;
 	to_put = sz_hex(info, args);
 	if (!to_put && info->type != POINTER)
-		info->hex_identifier = FALSE;
+		info->hex_identifier = false;
 	print_len = f_hex_get_print_len(info, to_put);
 	if (info->left_align)
 		f_hex_print(info, to_put, print_len, &res);

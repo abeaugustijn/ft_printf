@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   t_fi_parse_functions.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/07 12:09:37 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 09:06:06 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   t_fi_parse_functions.c                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/12/07 12:09:37 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 13:11:32 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parsing.h>
+#include <stdbool.h>
 #include <t_format_info.h>
 
 /*
@@ -26,15 +27,15 @@ void	flags(t_format_info *info, char **format)
 	while (**format)
 	{
 		if (**format == '-')
-			info->left_align = TRUE;
+			info->left_align = true;
 		else if (**format == '0')
-			info->zero_pad = TRUE;
+			info->zero_pad = true;
 		else if (**format == '+')
-			info->force_sign = TRUE;
+			info->force_sign = true;
 		else if (**format == '#')
-			info->hex_identifier = TRUE;
+			info->hex_identifier = true;
 		else if (**format == ' ')
-			info->has_space = TRUE;
+			info->has_space = true;
 		else
 			return ;
 		(*format)++;
@@ -53,8 +54,8 @@ void	width(t_format_info *info, char **format)
 
 	if (**format == '*')
 	{
-		info->expect_width_arg = TRUE;
-		info->has_width = TRUE;
+		info->expect_width_arg = true;
+		info->has_width = true;
 		(*format)++;
 		return ;
 	}
@@ -62,7 +63,7 @@ void	width(t_format_info *info, char **format)
 	if (width > 0)
 	{
 		info->width = width;
-		info->has_width = TRUE;
+		info->has_width = true;
 		while (ft_isdigit(**format))
 			(*format)++;
 	}
@@ -83,11 +84,11 @@ void	precision(t_format_info *info, char **format)
 
 	if (**format != '.')
 		return ;
-	info->has_precision = TRUE;
+	info->has_precision = true;
 	(*format)++;
 	if (**format == '*')
 	{
-		info->expect_precision_arg = TRUE;
+		info->expect_precision_arg = true;
 		(*format)++;
 		return ;
 	}
@@ -97,6 +98,19 @@ void	precision(t_format_info *info, char **format)
 		(*format)++;
 }
 
+t_var_type	g_specifier_types[] = {
+	[(int)'s'] = STRING,
+	[(int)'c'] = CHAR,
+	[(int)'i'] = INT,
+	[(int)'d'] = INT,
+	[(int)'%'] = PERCENTAGE,
+	[(int)'X'] = HEX_UP,
+	[(int)'x'] = HEX_LOW,
+	[(int)'p'] = POINTER,
+	[(int)'u'] = UNSIGNED,
+	[(int)'n'] = N,
+};
+
 /*
 **	Parse the specifier for the format string
 **	Returns a 0 if a valid specifier was found, 1 if there was none
@@ -104,26 +118,9 @@ void	precision(t_format_info *info, char **format)
 
 int		specifier(t_format_info *info, char **format)
 {
-	if (**format == 's')
-		info->type = STRING;
-	else if (**format == 'c')
-		info->type = CHAR;
-	else if (**format == 'i' || **format == 'd')
-		info->type = INT;
-	else if (**format == '%')
-		info->type = PERCENTAGE;
-	else if (**format == 'X')
-		info->type = HEX_UP;
-	else if (**format == 'x')
-		info->type = HEX_LOW;
-	else if (**format == 'p')
-		info->type = POINTER;
-	else if (**format == 'u')
-		info->type = UNSIGNED;
-	else if (**format == 'n')
-		info->type = N;
-	else
+	if (!ft_strchr("scidXxpun%", **format))
 		return (1);
+	info->type = g_specifier_types[(int)**format];
 	(*format)++;
 	return (0);
 }
@@ -136,7 +133,7 @@ void	size(t_format_info *info, char **format)
 {
 	if (**format == 'l')
 	{
-		info->has_size = TRUE;
+		info->has_size = true;
 		if ((*format)[1] == 'l')
 		{
 			info->size = LL;
@@ -149,7 +146,7 @@ void	size(t_format_info *info, char **format)
 	}
 	if (**format == 'h')
 	{
-		info->has_size = TRUE;
+		info->has_size = true;
 		if ((*format)[1] == 'h')
 		{
 			info->size = HH;

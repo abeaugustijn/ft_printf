@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   t_fi_get_info.c                                    :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/11 20:55:14 by abe           #+#   #+#                  */
-/*   Updated: 2019/12/10 07:52:46 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/04/08 19:43:24 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/08 19:43:24 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <t_format_info.h>
-#include <parsing.h>
+#include <stddef.h>
+#include "libft.h"
 
 /*
-**	Retrieves the info from a format 'snippet'
+**	Locate the first occurrence of 'c' in 's'. Returns NULL if 'c' is not in s.
 */
 
-void	t_fi_get_info(t_format_info *info, char **format)
+char	*ft_strchr(const char *s, int c)
 {
-	flags(info, format);
-	width(info, format);
-	precision(info, format);
-	size(info, format);
-	specifier(info, format);
-	t_fi_handle_zero_minus(info);
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char*)s);
+		s++;
+	}
+	if (c)
+		return (NULL);
+	return ((void *)s);
 }

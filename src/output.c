@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:49:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:14:03 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   output.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/12 14:49:17 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 12:10:17 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <formats.h>
+#include <ft_printf.h>
+#include <output.h>
 #include <stdarg.h>
 #include <t_format_info.h>
 
 int		output(t_format_info *info, va_list *args, int n)
 {
-	if (info->type == STRING)
-		return (f_string(info, args));
-	else if (info->type == CHAR)
-		return (f_char(info, args));
-	else if (info->type == INT)
-		return (f_int(info, args));
-	else if (info->type == PERCENTAGE)
-		return (f_percentage(info));
-	else if (info->type == HEX_UP || info->type == HEX_LOW)
-		return (f_hex(info, args));
-	else if (info->type == POINTER)
-		return (f_pointer(info, args));
-	else if (info->type == UNSIGNED)
-		return (f_unsigned(info, args));
-	else if (info->type == N)
-		return (f_n(args, n));
-	return (0);
+	return (g_format_functions[info->type](info, args, n));
 }

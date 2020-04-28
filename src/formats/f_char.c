@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   f_char.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 15:31:56 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/09 12:18:26 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   f_char.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/12 15:31:56 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 12:10:44 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 **	The format function for a single character. Has to take width into account.
 */
 
-int		f_char(t_format_info *info, va_list *args)
+int		f_char(t_format_info *info, va_list *args, int n)
 {
 	char			c;
 	unsigned int	i;
 	int				res;
 
+	(void)n;
 	res = 0;
 	c = (char)va_arg(*args, int);
 	if (info->left_align)

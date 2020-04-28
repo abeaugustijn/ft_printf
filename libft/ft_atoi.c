@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/08 19:49:12 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/08 19:49:12 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_atoi.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/04/08 19:49:12 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 13:14:59 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	Returns 0 if the string is valid so far, 1 if this is not the case.
 */
 
-static t_bool	ft_atoi_skip_ws(char **str, t_bool *is_neg)
+static bool	ft_atoi_skip_ws(char **str, int *is_neg)
 {
 	int	has_plus;
 
@@ -57,7 +57,7 @@ static t_bool	ft_atoi_skip_ws(char **str, t_bool *is_neg)
 
 int				ft_atoi(const char *str)
 {
-	t_bool				is_neg;
+	int					is_neg;
 	unsigned long int	res;
 	unsigned long int	prev_res;
 

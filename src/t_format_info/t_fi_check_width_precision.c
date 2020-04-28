@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   t_fi_check_width_precision.c                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 19:50:18 by abe               #+#    #+#             */
-/*   Updated: 2019/12/09 12:02:09 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   t_fi_check_width_precision.c                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/12 19:50:18 by abe           #+#   #+#                  */
+/*   Updated: 2020/04/28 13:12:34 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <t_format_info.h>
 #include <stdarg.h>
+#include <stdbool.h>
+#include <t_format_info.h>
 
 /*
 **	Get the next argument if there is a '*' flag for with or precision set.
@@ -28,7 +29,7 @@ void			t_fi_check_width_precision(t_format_info *info, va_list *args)
 		if (tmp_width < 0)
 		{
 			info->width = tmp_width * -1;
-			info->left_align = TRUE;
+			info->left_align = true;
 		}
 		else
 			info->width = tmp_width;

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   t_fi_get_info.c                                    :+:    :+:            */
+/*   output.h                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/11 20:55:14 by abe           #+#   #+#                  */
-/*   Updated: 2019/12/10 07:52:46 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/04/28 12:01:19 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 12:17:21 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <t_format_info.h>
-#include <parsing.h>
+#ifndef OUTPUT_H
+# define OUTPUT_H
 
-/*
-**	Retrieves the info from a format 'snippet'
-*/
+# include <formats.h>
+# include <t_format_info.h>
+# include <t_var_type.h>
 
-void	t_fi_get_info(t_format_info *info, char **format)
-{
-	flags(info, format);
-	width(info, format);
-	precision(info, format);
-	size(info, format);
-	specifier(info, format);
-	t_fi_handle_zero_minus(info);
-}
+int	(*g_format_functions[])(t_format_info *, va_list *, int) = {
+	[STRING] = f_string,
+	[CHAR] = f_char,
+	[INT] = f_int,
+	[PERCENTAGE] = f_percentage,
+	[HEX_UP] = f_hex,
+	[HEX_LOW] = f_hex,
+	[POINTER] = f_pointer,
+	[UNSIGNED] = f_pointer,
+	[N] = f_n,
+};
+
+#endif

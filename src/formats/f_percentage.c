@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   f_percentage.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/16 15:41:49 by abe               #+#    #+#             */
-/*   Updated: 2019/12/09 12:18:53 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   f_percentage.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/16 15:41:49 by abe           #+#   #+#                  */
+/*   Updated: 2020/04/28 12:12:15 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 **	Handle the precentage format
 */
 
-int		f_percentage(t_format_info *info)
+int		f_percentage(t_format_info *info, va_list *args, int n)
 {
 	unsigned int	i;
 
+	(void)args;
+	(void)n;
 	if (info->left_align)
 		ft_putchar_fd('%', FD);
 	i = 0;

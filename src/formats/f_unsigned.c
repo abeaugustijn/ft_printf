@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   f_unsigned.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 15:22:10 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/06 17:37:45 by abe              ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   f_unsigned.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/12/06 15:22:10 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 12:12:50 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,14 @@ static unsigned int	f_unsigned_get_print_len(t_format_info *info,
 **	The format function for formats of the type unsigned integer.
 */
 
-int					f_unsigned(t_format_info *info, va_list *args)
+int					f_unsigned(t_format_info *info, va_list *args, int n)
 {
 	unsigned long long	to_put;
 	int					res;
 	unsigned int		print_len;
 	unsigned int		i;
 
+	(void)n;
 	res = 0;
 	to_put = sz_hex(info, args);
 	print_len = f_unsigned_get_print_len(info, to_put);

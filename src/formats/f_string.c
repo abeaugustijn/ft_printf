@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   f_string.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:17:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2019/12/10 07:44:02 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   f_string.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/12 14:17:45 by aaugusti      #+#   #+#                  */
+/*   Updated: 2020/04/28 12:12:41 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ static unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 **	Function to output a string with different format rules.
 */
 
-int					f_string(t_format_info *info, va_list *args)
+int					f_string(t_format_info *info, va_list *args, int n)
 {
 	char			*str;
 	unsigned int	str_len;
 	int				res;
 
+	(void)n;
 	res = 0;
 	str = (char *)va_arg(*args, char *);
 	if (str == NULL)

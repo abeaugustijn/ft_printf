@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   t_format_info.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 20:45:27 by abe               #+#    #+#             */
-/*   Updated: 2019/12/10 09:50:38 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   t_format_info.h                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/11 20:45:27 by abe           #+#   #+#                  */
+/*   Updated: 2020/04/28 13:12:11 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_FORMAT_INFO_H
 # define T_FORMAT_INFO_H
+
 # include "../libft/libft.h"
-# include "t_var_type.h"
 # include "t_size.h"
+# include "t_var_type.h"
 # include <stdarg.h>
+# include <stdbool.h>
 
 typedef struct		s_format_info
 {
-	t_var_type		type;
-	t_size			size;
-	unsigned int	width;
-	t_bool			has_width;
+	bool			expect_precision_arg;
+	bool			expect_width_arg;
+	bool			force_sign;
+	bool			has_precision;
+	bool			has_size;
+	bool			has_space;
+	bool			has_width;
+	bool			hex_identifier;
+	bool			left_align;
+	bool			zero_pad;
 	int				precision;
-	t_bool			has_precision;
-	t_bool			has_size;
-	t_bool			has_space;
-	t_bool			left_align;
-	t_bool			zero_pad;
-	t_bool			expect_precision_arg;
-	t_bool			expect_width_arg;
-	t_bool			force_sign;
-	t_bool			hex_identifier;
+	t_size			size;
+	t_var_type		type;
+	unsigned int	width;
 }					t_format_info;
 
 t_format_info		*t_fi_create(void);
