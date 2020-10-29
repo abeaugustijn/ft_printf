@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   f_string.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/12 14:17:45 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:54:51 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:22:11 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:22:11 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

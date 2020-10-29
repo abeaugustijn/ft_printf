@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   t_fi_parse_functions.c                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/07 12:09:37 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:11:32 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:21:57 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:21:57 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

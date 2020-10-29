@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   t_fi_handle_zero_minus.c                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/19 10:49:23 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:12:50 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:21:56 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:21:56 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

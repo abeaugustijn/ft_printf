@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   t_size.h                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/06 15:27:55 by aaugusti      #+#   #+#                  */
-/*   Updated: 2019/12/06 15:28:35 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:22:41 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:22:41 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

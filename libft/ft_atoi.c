@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/08 19:49:12 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:14:59 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:22:59 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:23:37 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static bool	ft_atoi_skip_ws(char **str, int *is_neg)
 **	encountered and the current result value is returned.
 */
 
-int				ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int					is_neg;
 	unsigned long int	res;

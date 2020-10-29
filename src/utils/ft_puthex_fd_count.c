@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_puthex_fd_count.c                               :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/07 11:13:25 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:35:25 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:21:25 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:24:19 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 **	the amount of printed chars to *'count'.
 */
 
-void	ft_puthex_fd_count(char **tgt, unsigned long long n, bool cap, int *count)
+void	ft_puthex_fd_count(char **tgt, unsigned long long n, bool cap,
+		int *count)
 {
 	const char	*base = cap ? "0123456789ABCDEF" : "0123456789abcdef";
 

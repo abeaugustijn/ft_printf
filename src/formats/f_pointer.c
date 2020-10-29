@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   f_pointer.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/06 14:44:48 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:13:28 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:22:10 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:22:10 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

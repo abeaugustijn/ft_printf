@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_putchar_fd_count.c                              :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/18 14:12:18 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 13:35:28 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:21:24 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:21:24 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

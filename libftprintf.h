@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   libftprintf.h                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/06 11:19:09 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 14:08:22 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:21:08 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:21:09 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

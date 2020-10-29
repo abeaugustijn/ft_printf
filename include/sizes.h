@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   sizes.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/06 09:38:26 by aaugusti      #+#   #+#                  */
-/*   Updated: 2019/12/06 11:56:12 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:22:39 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:22:39 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

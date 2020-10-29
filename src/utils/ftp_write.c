@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/28 13:26:15 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/06/16 18:09:56 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:21:30 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:24:42 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ftp_write(char *to_write, char **target, size_t n, int *tot_written)
 	{
 		write_return = write(FD, to_write, n);
 		if (write_return == -1)
-			return;
+			return ;
 	}
 	if (tot_written)
 		(*tot_written) += n;

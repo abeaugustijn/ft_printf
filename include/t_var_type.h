@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   t_var_type.h                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/18 13:58:59 by aaugusti      #+#   #+#                  */
-/*   Updated: 2020/04/28 12:16:53 by aaugusti      ########   odam.nl         */
+/*   Created: 2020/10/29 14:22:42 by aaugusti      #+#    #+#                 */
+/*   Updated: 2020/10/29 14:22:42 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
