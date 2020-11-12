@@ -9,3 +9,4 @@ a.out*
 pft/
 test.c
 sprintf
+.clangd
