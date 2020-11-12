@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:07 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/12 13:36:41 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:43:53 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int					f_int(t_format_func_args args)
 	to_put = sz_int(args.info, args.args);
 	print_len = f_int_get_print_len(args.info, to_put);
 	if (args.info->left_align)
-		f_int_print(args.info, to_put, print_len, &res, args.fd);
+		f_int_print(args, to_put, print_len, &res);
 	if (args.info->width > print_len)
 	{
 		i = 0;
@@ -106,6 +106,6 @@ int					f_int(t_format_func_args args)
 		}
 	}
 	if (!args.info->left_align)
-		f_int_print(args.info, to_put, print_len, &res, args.fd);
+		f_int_print(args, to_put, print_len, &res);
 	return (res);
 }
