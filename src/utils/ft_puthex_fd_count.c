@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:21:25 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:24:19 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/11 16:49:57 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@
 **	the amount of printed chars to *'count'.
 */
 
-void	ft_puthex_fd_count(char **tgt, unsigned long long n, bool cap,
-		int *count)
+int	ft_puthex_fd_count(char **tgt, unsigned long long n, bool cap, int fd)
 {
 	const char	*base = cap ? "0123456789ABCDEF" : "0123456789abcdef";
+	int			res;
 
+	res = 0;
 	if (n < 16)
-		ft_putchar_fd_count(tgt, (base[n]), count);
+		res += ft_putchar_fd_count(tgt, (base[n]), fd);
 	else
 	{
-		ft_puthex_fd_count(tgt, n / 16, cap, count);
-		ft_putchar_fd_count(tgt, (base[n % 16]), count);
+		res += ft_puthex_fd_count(tgt, n / 16, cap, fd);
+		res += ft_putchar_fd_count(tgt, (base[n % 16]), fd);
 	}
+	return (res);
 }

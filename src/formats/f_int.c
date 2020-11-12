@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:07 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:22:07 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:36:41 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,34 @@
 **	Print the integer. This is only the non-whitespace part of the int.
 */
 
-static void			f_int_print(t_format_info *info, long long to_put,
+static void			f_int_print(t_format_func_args args, long long to_put,
 		unsigned int print_len, int *res)
 {
 	unsigned int	is_neg;
 	int				n_zero;
 	int				i;
+	const int		fd = args.fd;
 
 	is_neg = to_put < 0;
 	if (is_neg)
 		to_put *= -1;
-	if (is_neg || info->force_sign)
-		ft_putchar_fd_count(info->tgt, is_neg ? '-' : '+', res);
-	else if (info->has_space)
-		ft_putchar_fd_count(info->tgt, ' ', res);
-	n_zero = print_len - ((is_neg || info->force_sign || info->has_space)
-		? 1 : 0) - ft_intlen(to_put);
+	if (is_neg || args.info->force_sign)
+		*res += ft_putchar_fd_count(args.info->tgt, is_neg ? '-' : '+', fd);
+	else if (args.info->has_space)
+		*res += ft_putchar_fd_count(args.info->tgt, ' ', fd);
+	n_zero = print_len - ((is_neg || args.info->force_sign ||
+				args.info->has_space) ? 1 : 0) - ft_intlen(to_put);
 	if (n_zero > 0)
 	{
 		i = 0;
 		while (i < n_zero)
 		{
-			ft_putchar_fd_count(info->tgt, '0', res);
+			*res += ft_putchar_fd_count(args.info->tgt, '0', fd);
 			i++;
 		}
 	}
-	if (!(info->has_precision && !info->precision && !to_put))
-		ft_putnbr_ll_fd_count(info->tgt, to_put, res);
+	if (!(args.info->has_precision && !args.info->precision && !to_put))
+		*res += ft_putnbr_ll_fd_count(args.info->tgt, to_put, fd);
 }
 
 /*
@@ -83,29 +84,28 @@ static unsigned int	f_int_get_print_len(t_format_info *info, long long to_put)
 **	The format function for formats of the type integer.
 */
 
-int					f_int(t_format_info *info, va_list *args, int n)
+int					f_int(t_format_func_args args)
 {
 	long long int	to_put;
 	int				res;
 	unsigned int	print_len;
 	unsigned int	i;
 
-	(void)n;
 	res = 0;
-	to_put = sz_int(info, args);
-	print_len = f_int_get_print_len(info, to_put);
-	if (info->left_align)
-		f_int_print(info, to_put, print_len, &res);
-	if (info->width > print_len)
+	to_put = sz_int(args.info, args.args);
+	print_len = f_int_get_print_len(args.info, to_put);
+	if (args.info->left_align)
+		f_int_print(args.info, to_put, print_len, &res, args.fd);
+	if (args.info->width > print_len)
 	{
 		i = 0;
-		while (i < info->width - print_len)
+		while (i < args.info->width - print_len)
 		{
-			ft_putchar_fd_count(info->tgt, ' ', &res);
+			res += ft_putchar_fd_count(args.info->tgt, ' ', args.fd);
 			i++;
 		}
 	}
-	if (!info->left_align)
-		f_int_print(info, to_put, print_len, &res);
+	if (!args.info->left_align)
+		f_int_print(args.info, to_put, print_len, &res, args.fd);
 	return (res);
 }

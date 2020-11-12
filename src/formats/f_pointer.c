@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:10 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:22:10 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/11 16:39:08 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 **	format the pointer correctly.
 */
 
-int		f_pointer(t_format_info *info, va_list *args, int n)
+int		f_pointer(t_format_func_args args)
 {
-	(void)n;
-	info->hex_identifier = true;
-	info->has_size = true;
-	info->size = LL;
-	return (f_hex(info, args, n));
+	args.info->hex_identifier = true;
+	args.info->has_size = true;
+	args.info->size = LL;
+	return (f_hex(args));
 }

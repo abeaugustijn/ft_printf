@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:05 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:22:05 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 11:58:30 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,27 @@
 **	The format function for a single character. Has to take width into account.
 */
 
-int		f_char(t_format_info *info, va_list *args, int n)
+int		f_char(t_format_func_args args)
 {
 	char			c;
 	unsigned int	i;
 	int				res;
 
-	(void)n;
 	res = 0;
-	c = (char)va_arg(*args, int);
-	if (info->left_align)
-		ft_putchar_fd_count(info->tgt, c, &res);
-	if (info->has_width)
+	c = (char)va_arg(*args.args, int);
+	if (args.info->left_align)
+		res += ft_putchar_fd_count(args.info->tgt, c, args.fd);
+	if (args.info->has_width)
 	{
 		i = 0;
-		while (i < info->width - 1)
+		while (i < args.info->width - 1)
 		{
-			ft_putchar_fd_count(info->tgt, info->zero_pad ? '0' : ' ', &res);
+			res += ft_putchar_fd_count(args.info->tgt, args.info->zero_pad ?
+					'0' : ' ', args.fd);
 			i++;
 		}
 	}
-	if (!info->left_align)
-		ft_putchar_fd_count(info->tgt, c, &res);
+	if (!args.info->left_align)
+		res += ft_putchar_fd_count(args.info->tgt, c, args.fd);
 	return (res);
 }

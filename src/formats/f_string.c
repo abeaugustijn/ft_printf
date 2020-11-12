@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:11 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:22:11 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:37:16 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 **	Output the string
 */
 
-static void			f_string_putstr(t_format_info *info, char *str, int *res)
+static void			f_string_putstr(t_format_func_args args, char *str,
+		int *res)
 {
-	if (info->has_precision)
-		ft_putstr_n_fd_count(info->tgt, str, (size_t)info->precision, res);
+	if (args.info->has_precision)
+		*res += ft_putstr_n_fd_count(args.info->tgt, str,
+				(size_t)args.info->precision, args.fd);
 	else
-		ft_putstr_fd_count(info->tgt, str, res);
+		*res += ft_putstr_fd_count(args.info->tgt, str, args.fd);
 }
 
 /*
@@ -32,17 +34,18 @@ static void			f_string_putstr(t_format_info *info, char *str, int *res)
 **	string.
 */
 
-static unsigned int	f_string_print_padding(t_format_info *info,
+static unsigned int	f_string_print_padding(t_format_func_args args,
 		unsigned int str_len, int *res)
 {
 	unsigned int	i;
 
 	i = 0;
-	if (info->has_width && info->width > str_len)
+	if (args.info->has_width && args.info->width > str_len)
 	{
-		while (i < info->width - str_len)
+		while (i < args.info->width - str_len)
 		{
-			ft_putchar_fd_count(info->tgt, info->zero_pad ? '0' : ' ', res);
+			*res += ft_putchar_fd_count(args.info->tgt, args.info->zero_pad
+					? '0' : ' ', args.fd);
 			i++;
 		}
 	}
@@ -70,22 +73,21 @@ static unsigned int	f_string_get_strlen(t_format_info *info, char *str)
 **	Function to output a string with different format rules.
 */
 
-int					f_string(t_format_info *info, va_list *args, int n)
+int					f_string(t_format_func_args args)
 {
 	char			*str;
 	unsigned int	str_len;
 	int				res;
 
-	(void)n;
 	res = 0;
-	str = (char *)va_arg(*args, char *);
+	str = (char *)va_arg(*args.args, char *);
 	if (str == NULL)
 		str = "(null)";
-	str_len = f_string_get_strlen(info, str);
-	if (info->left_align)
-		f_string_putstr(info, str, &res);
-	f_string_print_padding(info, str_len, &res);
-	if (!info->left_align)
-		f_string_putstr(info, str, &res);
+	str_len = f_string_get_strlen(args.info, str);
+	if (args.info->left_align)
+		f_string_putstr(args, str, &res);
+	f_string_print_padding(args, str_len, &res);
+	if (!args.info->left_align)
+		f_string_putstr(args, str, &res);
 	return (res);
 }

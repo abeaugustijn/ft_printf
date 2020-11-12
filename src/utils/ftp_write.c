@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:21:30 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:24:42 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:30:28 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,20 @@
 **	This can either be stdout or a char buffer.
 */
 
-void	ftp_write(char *to_write, char **target, size_t n, int *tot_written)
+int	ftp_write(char *to_write, char **target, size_t n, int fd)
 {
 	int	write_return;
 
-	if (target)
+	if (*target)
 	{
 		ft_memcpy(*target, to_write, n);
 		(*target) += sizeof(char) * n;
 	}
 	else
 	{
-		write_return = write(FD, to_write, n);
+		write_return = write(fd, to_write, n);
 		if (write_return == -1)
-			return ;
+			return (n);
 	}
-	if (tot_written)
-		(*tot_written) += n;
+	return (n);
 }

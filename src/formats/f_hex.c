@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:06 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:22:06 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:37:05 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,28 @@
 **		always a minus
 */
 
-static void			f_hex_print(t_format_info *info, unsigned long long to_put,
-		unsigned int print_len, int *res)
+static void			f_hex_print(t_format_func_args args,
+		unsigned long long to_put, unsigned int print_len, int *res)
 {
 	int				n_zero;
 
-	if (info->has_precision && !info->precision && !to_put &&
-			info->type != POINTER)
+	if (args.info->has_precision && !args.info->precision && !to_put &&
+			args.info->type != POINTER)
 		return ;
-	if (info->hex_identifier)
-		ft_putstr_fd_count(info->tgt, info->type == HEX_UP ? "0X" : "0x", res);
-	n_zero = print_len - ft_hexlen(to_put) - ((info->hex_identifier &&
-		(to_put || info->type == POINTER)) ? 2 : 0);
+	if (args.info->hex_identifier)
+		*res += ft_putstr_fd_count(args.info->tgt, args.info->type == HEX_UP
+				? "0X" : "0x", args.fd);
+	n_zero = print_len - ft_hexlen(to_put) - ((args.info->hex_identifier &&
+		(to_put || args.info->type == POINTER)) ? 2 : 0);
 	while (n_zero > 0)
 	{
-		ft_putchar_fd_count(info->tgt, '0', res);
+		*res += ft_putchar_fd_count(args.info->tgt, '0', args.fd);
 		n_zero--;
 	}
-	if (!(info->has_precision && !info->precision && !to_put &&
-			info->type == POINTER))
-		ft_puthex_fd_count(info->tgt, to_put, info->type == HEX_UP, res);
+	if (!(args.info->has_precision && !args.info->precision && !to_put &&
+			args.info->type == POINTER))
+		*res += ft_puthex_fd_count(args.info->tgt, to_put,
+				args.info->type == HEX_UP, args.fd);
 }
 
 /*
@@ -82,31 +84,30 @@ static unsigned int	f_hex_get_print_len(t_format_info *info,
 **	Also implements support for pointers.
 */
 
-int					f_hex(t_format_info *info, va_list *args, int n)
+int					f_hex(t_format_func_args args)
 {
 	unsigned long long	to_put;
 	int					res;
 	unsigned int		print_len;
 	unsigned int		i;
 
-	(void)n;
 	res = 0;
-	to_put = sz_hex(info, args);
-	if (!to_put && info->type != POINTER)
-		info->hex_identifier = false;
-	print_len = f_hex_get_print_len(info, to_put);
-	if (info->left_align)
-		f_hex_print(info, to_put, print_len, &res);
-	if (info->width > print_len)
+	to_put = sz_hex(args.info, args.args);
+	if (!to_put && args.info->type != POINTER)
+		args.info->hex_identifier = false;
+	print_len = f_hex_get_print_len(args.info, to_put);
+	if (args.info->left_align)
+		f_hex_print(args, to_put, print_len, &res);
+	if (args.info->width > print_len)
 	{
 		i = 0;
-		while (i < info->width - print_len)
+		while (i < args.info->width - print_len)
 		{
-			ft_putchar_fd_count(info->tgt, ' ', &res);
+			res += ft_putchar_fd_count(args.info->tgt, ' ', args.fd);
 			i++;
 		}
 	}
-	if (!info->left_align)
-		f_hex_print(info, to_put, print_len, &res);
+	if (!args.info->left_align)
+		f_hex_print(args, to_put, print_len, &res);
 	return (res);
 }

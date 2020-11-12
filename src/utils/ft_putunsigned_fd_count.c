@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:21:29 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/10/29 14:21:29 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/11 16:57:07 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@
 **	chars to *'count'.
 */
 
-void	ft_putunsigned_fd_count(char **tgt, unsigned long long n, int *count)
+int	ft_putunsigned_fd_count(char **tgt, unsigned long long n, int fd)
 {
+	int	res;
+
+	res = 0;
 	if (n < 10)
-		ft_putchar_fd_count(tgt, (char)(n + '0'), count);
+		res += ft_putchar_fd_count(tgt, (char)(n + '0'), fd);
 	else
 	{
-		ft_putunsigned_fd_count(tgt, n / 10, count);
-		ft_putchar_fd_count(tgt, (char)((n % 10) + '0'), count);
+		ft_putunsigned_fd_count(tgt, n / 10, fd);
+		ft_putchar_fd_count(tgt, (char)((n % 10) + '0'), fd);
 	}
+	return (res);
 }
