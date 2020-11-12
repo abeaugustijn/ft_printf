@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:10 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/11 16:39:08 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 14:05:36 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 int		f_pointer(t_format_func_args args)
 {
-	args.info->hex_identifier = true;
-	args.info->has_size = true;
-	args.info->size = LL;
+	args.info.hex_identifier = true;
+	args.info.has_size = true;
+	args.info.size = LL;
 	return (f_hex(args));
 }

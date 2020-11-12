@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:33 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/12 13:32:47 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:57:54 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <t_format_info.h>
 
 typedef struct	s_format_func_args {
-	t_format_info	*info;
+	t_format_info	info;
 	va_list			*args;
 	int				n;
 	int				fd;

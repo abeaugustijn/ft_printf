@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:21:19 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/12 13:22:52 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:59:02 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	(*g_format_functions[])(t_format_func_args) = {
 
 int		output(t_format_func_args args)
 {
-	return (g_format_functions[args.info->type](args));
+	return (g_format_functions[args.info.type](args));
 }

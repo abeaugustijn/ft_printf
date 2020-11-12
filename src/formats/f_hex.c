@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:06 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/12 13:37:05 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 14:05:25 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,23 @@ static void			f_hex_print(t_format_func_args args,
 {
 	int				n_zero;
 
-	if (args.info->has_precision && !args.info->precision && !to_put &&
-			args.info->type != POINTER)
+	if (args.info.has_precision && !args.info.precision && !to_put &&
+			args.info.type != POINTER)
 		return ;
-	if (args.info->hex_identifier)
-		*res += ft_putstr_fd_count(args.info->tgt, args.info->type == HEX_UP
+	if (args.info.hex_identifier)
+		*res += ft_putstr_fd_count(args.info.tgt, args.info.type == HEX_UP
 				? "0X" : "0x", args.fd);
-	n_zero = print_len - ft_hexlen(to_put) - ((args.info->hex_identifier &&
-		(to_put || args.info->type == POINTER)) ? 2 : 0);
+	n_zero = print_len - ft_hexlen(to_put) - ((args.info.hex_identifier &&
+		(to_put || args.info.type == POINTER)) ? 2 : 0);
 	while (n_zero > 0)
 	{
-		*res += ft_putchar_fd_count(args.info->tgt, '0', args.fd);
+		*res += ft_putchar_fd_count(args.info.tgt, '0', args.fd);
 		n_zero--;
 	}
-	if (!(args.info->has_precision && !args.info->precision && !to_put &&
-			args.info->type == POINTER))
-		*res += ft_puthex_fd_count(args.info->tgt, to_put,
-				args.info->type == HEX_UP, args.fd);
+	if (!(args.info.has_precision && !args.info.precision && !to_put &&
+			args.info.type == POINTER))
+		*res += ft_puthex_fd_count(args.info.tgt, to_put,
+				args.info.type == HEX_UP, args.fd);
 }
 
 /*
@@ -93,21 +93,21 @@ int					f_hex(t_format_func_args args)
 
 	res = 0;
 	to_put = sz_hex(args.info, args.args);
-	if (!to_put && args.info->type != POINTER)
-		args.info->hex_identifier = false;
-	print_len = f_hex_get_print_len(args.info, to_put);
-	if (args.info->left_align)
+	if (!to_put && args.info.type != POINTER)
+		args.info.hex_identifier = false;
+	print_len = f_hex_get_print_len(&args.info, to_put);
+	if (args.info.left_align)
 		f_hex_print(args, to_put, print_len, &res);
-	if (args.info->width > print_len)
+	if (args.info.width > print_len)
 	{
 		i = 0;
-		while (i < args.info->width - print_len)
+		while (i < args.info.width - print_len)
 		{
-			res += ft_putchar_fd_count(args.info->tgt, ' ', args.fd);
+			res += ft_putchar_fd_count(args.info.tgt, ' ', args.fd);
 			i++;
 		}
 	}
-	if (!args.info->left_align)
+	if (!args.info.left_align)
 		f_hex_print(args, to_put, print_len, &res);
 	return (res);
 }

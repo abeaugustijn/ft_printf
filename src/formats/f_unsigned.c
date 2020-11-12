@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:12 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/11 17:00:14 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 14:05:59 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static void			f_unsigned_print(t_format_func_args args,
 	n_zero = print_len - ft_unsignedlen(to_put);
 	while (n_zero > 0)
 	{
-		*res += ft_putchar_fd_count(args.info->tgt, '0', args.fd);
+		*res += ft_putchar_fd_count(args.info.tgt, '0', args.fd);
 		n_zero--;
 	}
-	if (!(args.info->has_precision && !args.info->precision && !to_put))
-		*res += ft_putunsigned_fd_count(args.info->tgt, to_put, args.fd);
+	if (!(args.info.has_precision && !args.info.precision && !to_put))
+		*res += ft_putunsigned_fd_count(args.info.tgt, to_put, args.fd);
 }
 
 /*
@@ -72,19 +72,19 @@ int					f_unsigned(t_format_func_args args)
 
 	res = 0;
 	to_put = sz_hex(args.info, args.args);
-	print_len = f_unsigned_get_print_len(args.info, to_put);
-	if (args.info->left_align)
+	print_len = f_unsigned_get_print_len(&args.info, to_put);
+	if (args.info.left_align)
 		f_unsigned_print(args, to_put, print_len, &res);
-	if (args.info->width > print_len)
+	if (args.info.width > print_len)
 	{
 		i = 0;
-		while (i < args.info->width - print_len)
+		while (i < args.info.width - print_len)
 		{
-			res += ft_putchar_fd_count(args.info->tgt, ' ', args.fd);
+			res += ft_putchar_fd_count(args.info.tgt, ' ', args.fd);
 			i++;
 		}
 	}
-	if (!args.info->left_align)
+	if (!args.info.left_align)
 		f_unsigned_print(args, to_put, print_len, &res);
 	return (res);
 }

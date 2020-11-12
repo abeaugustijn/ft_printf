@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 14:22:11 by aaugusti      #+#    #+#                 */
-/*   Updated: 2020/11/12 13:37:16 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/11/12 14:03:32 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 static void			f_string_putstr(t_format_func_args args, char *str,
 		int *res)
 {
-	if (args.info->has_precision)
-		*res += ft_putstr_n_fd_count(args.info->tgt, str,
-				(size_t)args.info->precision, args.fd);
+	if (args.info.has_precision)
+		*res += ft_putstr_n_fd_count(args.info.tgt, str,
+				(size_t)args.info.precision, args.fd);
 	else
-		*res += ft_putstr_fd_count(args.info->tgt, str, args.fd);
+		*res += ft_putstr_fd_count(args.info.tgt, str, args.fd);
 }
 
 /*
@@ -40,11 +40,11 @@ static unsigned int	f_string_print_padding(t_format_func_args args,
 	unsigned int	i;
 
 	i = 0;
-	if (args.info->has_width && args.info->width > str_len)
+	if (args.info.has_width && args.info.width > str_len)
 	{
-		while (i < args.info->width - str_len)
+		while (i < args.info.width - str_len)
 		{
-			*res += ft_putchar_fd_count(args.info->tgt, args.info->zero_pad
+			*res += ft_putchar_fd_count(args.info.tgt, args.info.zero_pad
 					? '0' : ' ', args.fd);
 			i++;
 		}
@@ -83,11 +83,11 @@ int					f_string(t_format_func_args args)
 	str = (char *)va_arg(*args.args, char *);
 	if (str == NULL)
 		str = "(null)";
-	str_len = f_string_get_strlen(args.info, str);
-	if (args.info->left_align)
+	str_len = f_string_get_strlen(&args.info, str);
+	if (args.info.left_align)
 		f_string_putstr(args, str, &res);
 	f_string_print_padding(args, str_len, &res);
-	if (!args.info->left_align)
+	if (!args.info.left_align)
 		f_string_putstr(args, str, &res);
 	return (res);
 }
